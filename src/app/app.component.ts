@@ -30,7 +30,6 @@ import { User } from "./_models";
 @Component({ selector: "app", templateUrl: "app.component.html" })
 export class AppComponent {
   currentUser: User;
-  currentUserValue: User;
   public userName: string;
   constructor(
     private router: Router,
@@ -40,14 +39,6 @@ export class AppComponent {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
-    // this.authenticationService.currentUser.subscribe(
-    //   x => (this.userName = x)
-    // );
-  }
-
-  getUser() {
-    // return this.http.get<User[]>(`/users`);
-    return this.http.get<User[]>(`https://localhost:44380/api/login`);
   }
 
   logout() {
