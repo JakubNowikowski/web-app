@@ -22,6 +22,7 @@
 
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
 
 import { AuthenticationService } from "./_services";
 import { User } from "./_models";
@@ -29,14 +30,24 @@ import { User } from "./_models";
 @Component({ selector: "app", templateUrl: "app.component.html" })
 export class AppComponent {
   currentUser: User;
-
+  currentUserValue: User;
+  public userName: string;
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private http: HttpClient
   ) {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
+    // this.authenticationService.currentUser.subscribe(
+    //   x => (this.userName = x)
+    // );
+  }
+
+  getUser() {
+    // return this.http.get<User[]>(`/users`);
+    return this.http.get<User[]>(`https://localhost:44380/api/login`);
   }
 
   logout() {

@@ -8,11 +8,13 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get<User[]>(`/users`);
+    // return this.http.get<User[]>(`/users`);
+    return this.http.get<User[]>(`https://localhost:44380/api/login`);
   }
 
   register(user: User) {
-    return this.http.post(`/users/register`, user);
+    // return this.http.post(`/users/register`, user);
+    return this.http.post(`https://localhost:44380/api/login`, user);
   }
 
   delete(id: number) {
