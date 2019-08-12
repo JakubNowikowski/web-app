@@ -60,6 +60,7 @@ import { AlertComponent } from "./_components";
 import { ProductListComponent } from "./products/product-list.component";
 import { ConvertToSpaces } from "./shared/convert-to-spaces.pipe";
 import { StarComponent } from "./shared/star.component";
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 @NgModule({
   imports: [
@@ -77,7 +78,8 @@ import { StarComponent } from "./shared/star.component";
     AlertComponent,
     ProductListComponent,
     ConvertToSpaces,
-    StarComponent
+    StarComponent,
+    MyProfileComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

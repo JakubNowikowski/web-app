@@ -3,10 +3,13 @@
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/">Home</a>
     <a class="nav-item nav-link" routerLink="/profile">My profile</a>
+    <a class="nav-item nav-link" routerLink="/products">Products</a>
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
   </div>
 </nav>
-<a class="nav-item nav-link" *ngIf="currentUser"> Hello {{ currentUser.firstName }}!</a>
+<a class="nav-item nav-link" *ngIf="currentUser">
+  Hello {{ currentUser.firstName }}!</a
+>
 
 <!-- main app container -->
 <div class="jumbotron">
