@@ -2,6 +2,7 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="navbar-nav">
     <a class="nav-item nav-link" routerLink="/">Home</a>
+    <a class="nav-item nav-link" routerLink="/explore">Explore</a>
     <a class="nav-item nav-link" routerLink="/profile">My profile</a>
     <a class="nav-item nav-link" routerLink="/products">Products</a>
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
@@ -12,10 +13,10 @@
 >
 
 <!-- main app container -->
-<div class="jumbotron">
+<div class="jumbotron bg-dark">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 offset-sm-3">
+      <div class="col-sm-6 offset-sm-3 bg-dark">
         <alert></alert>
         <router-outlet></router-outlet>
       </div>
