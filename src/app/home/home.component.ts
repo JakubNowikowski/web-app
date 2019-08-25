@@ -78,4 +78,20 @@ export class HomeComponent {
         this.posts = posts;
       });
   }
+
+  deleteAllPosts(): void {
+    console.log("delete all");
+
+    this.contentService
+      .deleteAll()
+      .pipe(first())
+      .subscribe();
+
+    this.contentService
+      .getAll()
+      .pipe(first())
+      .subscribe(posts => {
+        this.posts = posts;
+      });
+  }
 }

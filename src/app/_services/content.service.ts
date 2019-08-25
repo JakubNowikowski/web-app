@@ -18,4 +18,8 @@ export class ContentService {
   delete(id: number) {
     return this.http.delete(`/users/${id}`);
   }
+
+  deleteAll() {
+    return this.http.delete(`https://localhost:44380/api/posts`);
+  }
 }
