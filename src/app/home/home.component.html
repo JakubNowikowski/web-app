@@ -19,12 +19,13 @@
   <div class="card-body">
     <div class="container-fluid">
       <div class="text-center">
+        <!-- <ul *ngIf="currentPost">
+          <li>{{ currentPost.content }}</li>
+        </ul> -->
         <ul *ngIf="posts">
-          <li *ngFor="let post of posts">
-            {{ post.content }} {{ post.userName }}
-          </li>
+          <li *ngFor="let post of posts">{{ post.content }}</li>
         </ul>
-        <a>No photos found</a>
+        <a *ngIf="posts.length === 0">No photos found</a>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { first } from "rxjs/operators";
 
 import { User, Post } from "../_models";
@@ -7,25 +7,33 @@ import {
   AuthenticationService,
   ContentService
 } from "../_services";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   templateUrl: "./home.component.html"
+  // changeDetection: ChangeDetectionStrategy.Default
 })
 export class HomeComponent {
   public pageTitle = "Home";
   currentUser: User;
+  currentPost: Post;
   users: User[] = [];
   posts: Post[] = [];
   post: Post;
+  newPost: Post;
+  isRequesting: string;
 
   constructor(
     private userService: UserService,
     private contentService: ContentService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private http: HttpClient
   ) {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
+
+    this.contentService.currentPost.subscribe(x => (this.currentPost = x));
   }
 
   ngOnInit() {
@@ -57,6 +65,9 @@ export class HomeComponent {
       username: this.currentUser.username,
       content: this.inputContent
     };
+
+    console.log(this.currentPost.content);
+
     this.contentService
       .addPost(this.post)
       .pipe(first())
@@ -71,27 +82,36 @@ export class HomeComponent {
         }
       );
 
-    this.contentService
-      .getAll()
-      .pipe(first())
-      .subscribe(posts => {
-        this.posts = posts;
-      });
+    this.contentService.currentPost.subscribe(x => (this.currentPost = x));
+
+    console.log(this.currentPost.content);
+
+    this.newPost = {
+      username: this.currentPost.username,
+      content: this.currentPost.content
+    };
+
+    this.posts.push(this.newPost);
+    // console.log(this.isRequesting);
+
+    // this.isRequesting = "true";
+    // this.contentService
+    //   .getAll()
+    //   .pipe(first())
+    //   .subscribe(posts => {
+    //     this.posts = posts;
+    //   });
+    // this.ref.detectChanges();
   }
 
   deleteAllPosts(): void {
-    console.log("delete all");
+    // console.log("delete all");
+
+    console.log(this.currentPost.content);
 
     this.contentService
       .deleteAll()
       .pipe(first())
       .subscribe();
-
-    this.contentService
-      .getAll()
-      .pipe(first())
-      .subscribe(posts => {
-        this.posts = posts;
-      });
   }
 }
