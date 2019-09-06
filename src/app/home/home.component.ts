@@ -37,18 +37,22 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.userService
-      .getAll()
-      .pipe(first())
-      .subscribe(users => {
-        this.users = users;
-      });
+    this.getAllUsers();
 
     this.contentService
       .getAll()
       .pipe(first())
       .subscribe(posts => {
         this.posts = posts;
+      });
+  }
+
+  private getAllUsers() {
+    this.userService
+      .getAll()
+      .pipe(first())
+      .subscribe(users => {
+        this.users = users;
       });
   }
 
@@ -84,34 +88,22 @@ export class HomeComponent {
 
     this.contentService.currentPost.subscribe(x => (this.currentPost = x));
 
-    console.log(this.currentPost.content);
-
+    // TO DO after linking to real data base
     this.newPost = {
-      username: this.currentPost.username,
-      content: this.currentPost.content
+      username: this.currentUser.username,
+      content: this.inputContent
     };
 
-    this.posts.push(this.newPost);
-    // console.log(this.isRequesting);
-
-    // this.isRequesting = "true";
-    // this.contentService
-    //   .getAll()
-    //   .pipe(first())
-    //   .subscribe(posts => {
-    //     this.posts = posts;
-    //   });
-    // this.ref.detectChanges();
+    this.posts.unshift(this.newPost);
   }
 
   deleteAllPosts(): void {
-    // console.log("delete all");
-
-    console.log(this.currentPost.content);
-
     this.contentService
       .deleteAll()
       .pipe(first())
       .subscribe();
+
+    // TO DO after linking to real data base
+    this.posts.length = 0;
   }
 }
