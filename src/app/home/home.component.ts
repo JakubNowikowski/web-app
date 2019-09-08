@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { first } from "rxjs/operators";
 
-import { User, Post } from "../_models";
+import { User, Post, Follow } from "../_models";
 import {
   UserService,
   AuthenticationService,
@@ -22,6 +22,7 @@ export class HomeComponent {
   post: Post;
   newPost: Post;
   isRequesting: string;
+  follows: Follow[] = [];
 
   constructor(
     private userService: UserService,
@@ -39,22 +40,38 @@ export class HomeComponent {
   ngOnInit() {
     this.getAllUsers();
 
+    this.getPosts();
+
+    this.getFollowings();
+  }
+
+  private getAllUsers() {
+    this.userService
+      .getAllUsers()
+      .pipe(first())
+      .subscribe(users => {
+        this.users = users;
+      });
+  }
+  
+  private getFollowings() {
+    this.userService
+      .getFollowings(this.currentUser.username)
+      .pipe(first())
+      .subscribe(follow => {
+        this.follows = follow;
+      });
+  }
+
+  private getPosts() {
     this.contentService
-      .getAll()
+      .getAll(this.currentUser.username)
       .pipe(first())
       .subscribe(posts => {
         this.posts = posts;
       });
   }
 
-  private getAllUsers() {
-    this.userService
-      .getAll()
-      .pipe(first())
-      .subscribe(users => {
-        this.users = users;
-      });
-  }
 
   _inputContent: string;
   get inputContent(): string {
@@ -69,8 +86,6 @@ export class HomeComponent {
       username: this.currentUser.username,
       content: this.inputContent
     };
-
-    console.log(this.currentPost.content);
 
     this.contentService
       .addPost(this.post)
@@ -95,6 +110,8 @@ export class HomeComponent {
     };
 
     this.posts.unshift(this.newPost);
+
+    this.inputContent = "";
   }
 
   deleteAllPosts(): void {

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 
-import { Post } from "../_models";
+import { Post, Follow } from "../_models";
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -22,8 +22,14 @@ export class ContentService {
     return this.currentPostSubject.value;
   }
 
-  getAll() {
-    return this.http.get<Post[]>(`https://localhost:44380/api/posts`);
+  getAll(userName: string) {
+    // let headers = new Headers();
+    // headers.append("Content-Type", "application/json");
+    // headers.append("userName", userName);
+    let params = new HttpParams().set("userName", userName);
+    return this.http.get<Post[]>(`https://localhost:44380/api/posts`, {
+      params: params
+    });
   }
 
   addPost(post: Post) {

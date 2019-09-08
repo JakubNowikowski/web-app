@@ -48,7 +48,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 // used to create fake backend
-import { fakeBackendProvider } from "./_helpers";
+// import { fakeBackendProvider } from "./_helpers";
 
 import { appRoutingModule } from "./app.routing";
 import { JwtInterceptor, ErrorInterceptor } from "./_helpers";
@@ -60,8 +60,8 @@ import { AlertComponent } from "./_components";
 import { ProductListComponent } from "./products/product-list.component";
 import { ConvertToSpaces } from "./shared/convert-to-spaces.pipe";
 import { StarComponent } from "./shared/star.component";
-import { MyProfileComponent } from './my-profile/my-profile.component';
-import { ExploreComponent } from './explore/explore.component';
+import { MyProfileComponent } from "./my-profile/my-profile.component";
+import { ExploreComponent } from "./explore/explore.component";
 
 @NgModule({
   imports: [
@@ -85,10 +85,10 @@ import { ExploreComponent } from './explore/explore.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
 
     // provider used to create fake backend
-    fakeBackendProvider
+    // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
