@@ -9,6 +9,8 @@ export class ExploreComponent implements OnInit {
   users: User[] = [];
   currentUser: User;
   follow: Follow;
+  followers: Follow[] = [];
+  followings: Follow[] = [];
 
   constructor(
     private userService: UserService,
@@ -25,6 +27,27 @@ export class ExploreComponent implements OnInit {
       .pipe(first())
       .subscribe(users => {
         this.users = users;
+      });
+
+      this.getFollowers();
+      this.getFollowings();
+  }
+
+  private getFollowers() {
+    this.userService
+      .getFollowers(this.currentUser.username)
+      .pipe(first())
+      .subscribe(follow => {
+        this.followers = follow;
+      });
+  }
+
+  private getFollowings() {
+    this.userService
+      .getFollowings(this.currentUser.username)
+      .pipe(first())
+      .subscribe(follow => {
+        this.followings = follow;
       });
   }
 

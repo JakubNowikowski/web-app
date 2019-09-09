@@ -21,11 +21,24 @@ export class UserService {
     return this.http.delete(`/users/${id}`);
   }
 
+  getFollowers(userName: string) {
+    let params = new HttpParams().set("userName", userName);
+    return this.http.get<Follow[]>(
+      `https://localhost:44380/api/follow/followers`,
+      {
+        params: params
+      }
+    );
+  }
+
   getFollowings(userName: string) {
     let params = new HttpParams().set("userName", userName);
-    return this.http.get<Follow[]>(`https://localhost:44380/api/follow`, {
-      params: params
-    });
+    return this.http.get<Follow[]>(
+      `https://localhost:44380/api/follow/followings`,
+      {
+        params: params
+      }
+    );
   }
 
   follow(follow: Follow) {

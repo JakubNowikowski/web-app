@@ -1,3 +1,11 @@
+<p>Followers:</p>
+<ul *ngIf="followers">
+  <li *ngFor="let follow of followers">{{ follow.follower }}</li>
+</ul>
+<p>Followings:</p>
+<ul *ngIf="followings">
+  <li *ngFor="let follow of followings">{{ follow.following }}</li>
+</ul>
 <p>All existing accounts:</p>
 <ul>
   <li *ngFor="let user of users">
