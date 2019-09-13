@@ -62,6 +62,7 @@ import { ConvertToSpaces } from "./shared/convert-to-spaces.pipe";
 import { StarComponent } from "./shared/star.component";
 import { MyProfileComponent } from "./my-profile/my-profile.component";
 import { ExploreComponent } from "./explore/explore.component";
+import { ModalModule } from "./_modalWindow/modal.module";
 
 @NgModule({
   imports: [
@@ -69,6 +70,7 @@ import { ExploreComponent } from "./explore/explore.component";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ModalModule,
     appRoutingModule
   ],
   declarations: [

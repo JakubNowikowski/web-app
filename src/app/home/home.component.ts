@@ -23,6 +23,7 @@ export class HomeComponent {
   newPost: Post;
   isRequesting: string;
   follows: Follow[] = [];
+  followings: string[] = [];
 
   constructor(
     private userService: UserService,
@@ -40,9 +41,16 @@ export class HomeComponent {
   ngOnInit() {
     this.getAllUsers();
 
+    this.getFollowings(); // must update immediately
+
     this.getPosts();
 
-    this.getFollowings();
+    console.log("here");
+    console.log(this.follows);
+    // this.followings.forEach(element => {
+    //   console.log(element);
+    // });
+    // this.getPosts(this.follows);
   }
 
   private getAllUsers() {
@@ -53,25 +61,42 @@ export class HomeComponent {
         this.users = users;
       });
   }
-  
+
   private getFollowings() {
     this.userService
-      .getFollowings(this.currentUser.username)
-      .pipe(first())
-      .subscribe(follow => {
-        this.follows = follow;
-      });
+      .getFollowingsPromise(this.currentUser.username)
+      .then(result => {
+        this.follows = result;
+      })
+      .catch(error => console.log(error));
+  }
+
+  // private getFollowings(): Follow[] {
+  //   this.userService
+  //     .getFollowingsPromise(this.currentUser.username)
+  //     .then(follow => {
+  //       this.follows = follow;
+  //     });
+  //   return this.follows;
+  // }
+
+  private getUserNames(followsArr: Follow[]): string[] {
+    let result: string[] = [];
+    followsArr.forEach(follow => {
+      result.push(follow.following);
+    });
+
+    return result;
   }
 
   private getPosts() {
     this.contentService
-      .getAll(this.currentUser.username)
+      .getPosts(this.currentUser.username)
       .pipe(first())
       .subscribe(posts => {
         this.posts = posts;
       });
   }
-
 
   _inputContent: string;
   get inputContent(): string {
@@ -82,6 +107,9 @@ export class HomeComponent {
   }
 
   addPost(): void {
+    this.followings = this.follows.map(function(follow) {
+      return follow.following;
+    });
     this.post = {
       username: this.currentUser.username,
       content: this.inputContent
@@ -115,12 +143,14 @@ export class HomeComponent {
   }
 
   deleteAllPosts(): void {
-    this.contentService
-      .deleteAll()
-      .pipe(first())
-      .subscribe();
+    console.log(this.follows);
 
-    // TO DO after linking to real data base
-    this.posts.length = 0;
+    // this.contentService
+    //   .deleteAll()
+    //   .pipe(first())
+    //   .subscribe();
+
+    // // TO DO after linking to real data base
+    // this.posts.length = 0;
   }
 }

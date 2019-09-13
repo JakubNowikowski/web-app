@@ -29,8 +29,8 @@ export class ExploreComponent implements OnInit {
         this.users = users;
       });
 
-      this.getFollowers();
-      this.getFollowings();
+    this.getFollowers();
+    this.getFollowings();
   }
 
   private getFollowers() {
@@ -58,6 +58,22 @@ export class ExploreComponent implements OnInit {
     };
     this.userService
       .follow(this.follow)
+      .pipe(first())
+      .subscribe(
+        data => {
+          // this.alertService.success("Registration successful", true);
+          // this.router.navigate(["/login"]);
+        },
+        error => {
+          // this.alertService.error(error);
+          // this.loading = false;
+        }
+      );
+  }
+
+  unFollowUser(userToUnfollow: string) {
+    this.userService
+      .unfollow(this.currentUser.username, userToUnfollow)
       .pipe(first())
       .subscribe(
         data => {

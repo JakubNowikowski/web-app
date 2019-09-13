@@ -41,10 +41,42 @@ export class UserService {
     );
   }
 
-  follow(follow: Follow) {
+  getFollowingsPromise(userName: string): Promise<Follow[]> {
+    let params = new HttpParams().set("userName", userName);
+    return this.http
+      .get<Follow[]>(`https://localhost:44380/api/follow/followings`, {
+        params: params
+      })
+      .toPromise();
+  }
+
+  // getPeople(): Promise<Array> {
+  //   return this.http
+  //     .get("api/people.json", {
+  //       headers: {
+  //         "X-Some-Header": "1234"
+  //       }
+  //     })
+  //     .map(res => {
+  //       // some manipulation
+  //       return res.json();
+  //     })
+  //     .toPromise();
+  // }
+
+  follow(followItem: Follow) {
     return this.http.post<Follow[]>(
       `https://localhost:44380/api/follow`,
-      follow
+      followItem
     );
+  }
+
+  unfollow(follower: string, following: string) {
+    let params = new HttpParams()
+      .set("follower", follower)
+      .set("following", following);
+    return this.http.delete<Follow[]>(`https://localhost:44380/api/follow`, {
+      params: params
+    });
   }
 }

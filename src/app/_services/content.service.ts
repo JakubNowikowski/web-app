@@ -22,11 +22,21 @@ export class ContentService {
     return this.currentPostSubject.value;
   }
 
-  getAll(userName: string) {
-    // let headers = new Headers();
-    // headers.append("Content-Type", "application/json");
-    // headers.append("userName", userName);
-    let params = new HttpParams().set("userName", userName);
+  getPostByUserName(followingUsers: string[]) {
+    // let followingUsers = ["user2", "user3","user4"];
+    let params = new HttpParams();
+    params = params.append("followingUsers", followingUsers.join(","));
+    // followingUsers.forEach(user => {
+    //   params = params.append("followingUsers", user);
+    // });
+    return this.http.get<Post[]>(`https://localhost:44380/api/posts`, {
+      params: params
+    });
+  }
+
+  getPosts(currentUser: string) {
+    let params = new HttpParams();
+    params = params.append("currentUser", currentUser);
     return this.http.get<Post[]>(`https://localhost:44380/api/posts`, {
       params: params
     });
