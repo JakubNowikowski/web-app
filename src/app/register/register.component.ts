@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { first } from "rxjs/operators";
 
 import { AlertService, UserService, AuthenticationService } from "../_services";
+import { User } from "../_models";
 
 @Component({ templateUrl: "register.component.html" })
 export class RegisterComponent implements OnInit {
@@ -47,18 +48,29 @@ export class RegisterComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService
-      .register(this.registerForm.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.alertService.success("Registration successful", true);
-          this.router.navigate(["/login"]);
-        },
-        error => {
-          this.alertService.error(error);
-          this.loading = false;
-        }
-      );
+    // this.userService
+    //   .register(this.registerForm.value)
+    //   .pipe(first())
+    //   .subscribe(
+    //     data => {
+    //       this.alertService.success("Registration successful", true);
+    //       this.router.navigate(["/login"]);
+    //     },
+    //     error => {
+    //       this.alertService.error(error);
+    //       this.loading = false;
+    //     }
+    //   );
+
+    this.userService.addUser(this.registerForm.value).subscribe(
+      (result: User) => {
+        this.alertService.success("Registration successful", true);
+        this.router.navigate(["/login"]);
+      },
+      error => {
+        this.alertService.error(error);
+        this.loading = false;
+      }
+    );
   }
 }

@@ -6,10 +6,11 @@ import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable({ providedIn: "root" })
-export class ContentService {
+export class PostsService {
   private currentPostSubject: BehaviorSubject<Post>;
   public currentPost: Observable<Post>;
   public post: Post;
+  baseUrl: string = "https://localhost:44380/api/";
 
   constructor(private http: HttpClient) {
     this.currentPostSubject = new BehaviorSubject<Post>(

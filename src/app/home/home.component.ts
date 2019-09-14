@@ -2,11 +2,7 @@ import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { first } from "rxjs/operators";
 
 import { User, Post, Follow } from "../_models";
-import {
-  UserService,
-  AuthenticationService,
-  ContentService
-} from "../_services";
+import { UserService, AuthenticationService, PostsService } from "../_services";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
@@ -27,7 +23,7 @@ export class HomeComponent {
 
   constructor(
     private userService: UserService,
-    private contentService: ContentService,
+    private postsService: PostsService,
     private authenticationService: AuthenticationService,
     private http: HttpClient
   ) {
@@ -35,7 +31,7 @@ export class HomeComponent {
       x => (this.currentUser = x)
     );
 
-    this.contentService.currentPost.subscribe(x => (this.currentPost = x));
+    this.postsService.currentPost.subscribe(x => (this.currentPost = x));
   }
 
   ngOnInit() {
@@ -90,7 +86,7 @@ export class HomeComponent {
   }
 
   private getPosts() {
-    this.contentService
+    this.postsService
       .getPosts(this.currentUser.username)
       .pipe(first())
       .subscribe(posts => {
@@ -115,7 +111,7 @@ export class HomeComponent {
       content: this.inputContent
     };
 
-    this.contentService
+    this.postsService
       .addPost(this.post)
       .pipe(first())
       .subscribe(
@@ -129,7 +125,7 @@ export class HomeComponent {
         }
       );
 
-    this.contentService.currentPost.subscribe(x => (this.currentPost = x));
+    this.postsService.currentPost.subscribe(x => (this.currentPost = x));
 
     // TO DO after linking to real data base
     this.newPost = {
@@ -145,7 +141,7 @@ export class HomeComponent {
   deleteAllPosts(): void {
     console.log(this.follows);
 
-    // this.contentService
+    // this.postsService
     //   .deleteAll()
     //   .pipe(first())
     //   .subscribe();

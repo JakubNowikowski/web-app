@@ -2,19 +2,19 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 
 import { User, Follow } from "../_models";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
+  baseUrl: string = "https://localhost:44380/";
   constructor(private http: HttpClient) {}
 
-  getAllUsers() {
-    // return this.http.get<User[]>(`/users`);
-    return this.http.get<User[]>(`https://localhost:44380/api/users`);
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl + "api/users");
   }
 
-  register(user: User) {
-    // return this.http.post(`/users/register`, user);
-    return this.http.post(`https://localhost:44380/api/users`, user);
+  addUser(user: User): Observable<Object> {
+    return this.http.post(this.baseUrl + "api/users", user);
   }
 
   delete(id: number) {
