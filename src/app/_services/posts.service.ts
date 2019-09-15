@@ -57,6 +57,12 @@ export class PostsService {
     );
   }
 
+  addWorkTime(userId: number, content: string) {
+    return this.http.post<Post>(this.baseUrl + `users/${userId}/posts`, {
+      content: content
+    });
+  }
+
   delete(id: number) {
     return this.http.delete(`/users/${id}`);
   }
