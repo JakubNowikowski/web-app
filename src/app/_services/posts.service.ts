@@ -35,12 +35,16 @@ export class PostsService {
     });
   }
 
-  getPosts(currentUser: string) {
-    let params = new HttpParams();
-    params = params.append("currentUser", currentUser);
-    return this.http.get<Post[]>(`https://localhost:44380/api/posts`, {
-      params: params
-    });
+  // getPosts(currentUser: string) {
+  //   let params = new HttpParams();
+  //   params = params.append("currentUser", currentUser);
+  //   return this.http.get<Post[]>(`https://localhost:44380/api/posts`, {
+  //     params: params
+  //   });
+  // }
+
+  getPosts(userId: number) {
+    return this.http.get<Post[]>(this.baseUrl + `users/${userId}/posts`);
   }
 
   addPost(post: Post) {

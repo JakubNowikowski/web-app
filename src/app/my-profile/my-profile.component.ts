@@ -2,11 +2,13 @@ import { Component, OnInit } from "@angular/core";
 import { ModalService } from "../_modalWindow/modal.service";
 import { Follow, User } from "../_models";
 import { UserService, AuthenticationService } from "../_services";
+import { first } from "rxjs/operators";
 
 @Component({ templateUrl: "my-profile.component.html" })
 export class MyProfileComponent implements OnInit {
   bodyText: string;
   currentUser: User;
+  followedUsers: User[];
   follows: Follow[] = [];
 
   constructor(
@@ -21,16 +23,26 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit() {
     this.bodyText = "This text can be updated in modal 1";
-    this.getFollowings();
+    this.getFollowers();
+  }
+
+  private getFollowers() {
+    console.log(this.currentUser.id);
+    this.userService
+      .getFollowers(this.currentUser.id)
+      .pipe(first())
+      .subscribe(follow => {
+        this.followedUsers = follow;
+      });
   }
 
   private getFollowings() {
-    this.userService
-      .getFollowingsPromise(this.currentUser.username)
-      .then(result => {
-        this.follows = result;
-      })
-      .catch(error => console.log(error));
+    // this.userService
+    //   .getFollowingsPromise(this.currentUser.id)
+    //   .then(result => {
+    //     this.follows = result;
+    //   })
+    //   .catch(error => console.log(error));
   }
 
   openModal(id: string) {

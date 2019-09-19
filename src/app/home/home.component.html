@@ -17,8 +17,7 @@
     {{ pageTitle }}
   </div>
   <ul *ngIf="follows">
-    <!-- <li *ngFor="let follow of follows">{{ follow.following }}</li> -->
-    <li *ngFor="let follow of follows">{{follow.following}}</li>
+    <li *ngFor="let follow of follows">{{ follow.following }}</li>
   </ul>
 
   <!-- "unFollowUser(user.firstName)" -->

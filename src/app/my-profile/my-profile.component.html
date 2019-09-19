@@ -26,16 +26,16 @@
   <jw-modal id="custom-modal-1">
     <h1>A Custom Modal!</h1>
     <p>Home page text: <input type="text" [(ngModel)]="bodyText" /></p>
-    <ul *ngIf="follows">
-      <li *ngFor="let follow of follows">{{ follow.following }}</li>
+    <ul *ngIf="followedUsers">
+      <li *ngFor="let follow of followedUsers">{{ follow.userName }}</li>
     </ul>
     <button (click)="closeModal('custom-modal-1')">Close</button>
   </jw-modal>
 
   <jw-modal id="custom-modal-2">
     <h1 style="height:1000px">A Tall Custom Modal!</h1>
-    <ul *ngIf="follows">
-      <li *ngFor="let follow of follows">{{ follow.following }}</li>
+    <ul *ngIf="followedUsers">
+      <li *ngFor="let follow of followedUsers">{{ follow.userName }}</li>
     </ul>
     <button (click)="closeModal('custom-modal-2')">Close</button>
   </jw-modal>

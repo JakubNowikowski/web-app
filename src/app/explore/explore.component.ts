@@ -30,16 +30,17 @@ export class ExploreComponent implements OnInit {
       });
 
     this.getFollowers();
-    this.getFollowings();
+    console.log(this.followers);
+    // this.getFollowings();
   }
 
   private getFollowers() {
-    this.userService
-      .getFollowers(this.currentUser.username)
-      .pipe(first())
-      .subscribe(follow => {
-        this.followers = follow;
-      });
+    // this.userService
+    //   .getFollowers(this.currentUser.id)
+    //   .pipe(first())
+    //   .subscribe(follow => {
+    //     this.followers = follow;
+    //   });
   }
 
   private getFollowings() {
@@ -52,23 +53,25 @@ export class ExploreComponent implements OnInit {
   }
 
   followUser(userToFollow: string): void {
-    this.follow = {
-      follower: this.currentUser.username,
-      following: userToFollow
-    };
-    this.userService
-      .follow(this.follow)
-      .pipe(first())
-      .subscribe(
-        data => {
-          // this.alertService.success("Registration successful", true);
-          // this.router.navigate(["/login"]);
-        },
-        error => {
-          // this.alertService.error(error);
-          // this.loading = false;
-        }
-      );
+    console.log(this.followers);
+
+    //   this.follow = {
+    //     follower: this.currentUser.username,
+    //     following: userToFollow
+    //   };
+    //   this.userService
+    //     .follow(this.follow)
+    //     .pipe(first())
+    //     .subscribe(
+    //       data => {
+    //         // this.alertService.success("Registration successful", true);
+    //         // this.router.navigate(["/login"]);
+    //       },
+    //       error => {
+    //         // this.alertService.error(error);
+    //         // this.loading = false;
+    //       }
+    //     );
   }
 
   unFollowUser(userToUnfollow: string) {

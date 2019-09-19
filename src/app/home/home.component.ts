@@ -37,16 +37,12 @@ export class HomeComponent {
   ngOnInit() {
     this.getAllUsers();
 
-    this.getFollowings(); // must update immediately
+    // this.getFollowings(); // must update immediately
 
     this.getPosts();
 
     console.log("here");
-    console.log(this.follows);
-    // this.followings.forEach(element => {
-    //   console.log(element);
-    // });
-    // this.getPosts(this.follows);
+    console.log(this.posts);
   }
 
   private getAllUsers() {
@@ -76,18 +72,9 @@ export class HomeComponent {
   //   return this.follows;
   // }
 
-  private getUserNames(followsArr: Follow[]): string[] {
-    let result: string[] = [];
-    followsArr.forEach(follow => {
-      result.push(follow.following);
-    });
-
-    return result;
-  }
-
   private getPosts() {
     this.postsService
-      .getPosts(this.currentUser.username)
+      .getPosts(this.currentUser.id)
       .pipe(first())
       .subscribe(posts => {
         this.posts = posts;
@@ -102,28 +89,47 @@ export class HomeComponent {
     this._inputContent = value;
   }
 
-  addPostOld(): void {
-    this.followings = this.follows.map(function(follow) {
-      return follow.following;
-    });
-    this.post = {
-      username: this.currentUser.username,
-      content: this.inputContent
-    };
+  // addPostOld(): void {
+  //   this.followings = this.follows.map(function(follow) {
+  //     return follow.following;
+  //   });
+  //   this.post = {
+  //     username: this.currentUser.username,
+  //     content: this.inputContent
+  //   };
 
-    // this.postsService
-    //   .addPost(this.post)
-    //   .pipe(first())
-    //   .subscribe(data => {}, error => {});
+  // this.postsService
+  //   .addPost(this.post)
+  //   .pipe(first())
+  //   .subscribe(data => {}, error => {});
 
+  //   this.postsService
+  //     .addWorkTime(
+  //       this.currentUser.id,
+  //       "elopooooooooooooooooooooooooooooooooooooooo"
+  //     )
+  //     .subscribe(data => {}, error => {});
+
+  //   // this.postsService.currentPost.subscribe(x => (this.currentPost = x));
+
+  //   // TO DO after linking to real data base
+  //   this.newPost = {
+  //     username: this.currentUser.username,
+  //     content: this.inputContent
+  //   };
+
+  //   this.posts.unshift(this.newPost);
+
+  //   this.inputContent = "";
+  // }
+
+  addPost(): void {
     this.postsService
-      .addWorkTime(
-        this.currentUser.id,
-        "elopooooooooooooooooooooooooooooooooooooooo"
-      )
-      .subscribe(data => {}, error => {});
-
-    // this.postsService.currentPost.subscribe(x => (this.currentPost = x));
+      .addWorkTime(this.currentUser.id, this.inputContent)
+      .pipe(first())
+      .subscribe(post => {
+        this.post = post;
+      });
 
     // TO DO after linking to real data base
     this.newPost = {
@@ -136,27 +142,9 @@ export class HomeComponent {
     this.inputContent = "";
   }
 
-  addPost(): void {
-    this.postsService
-      .addWorkTime(this.currentUser.id, this.inputContent)
-      .pipe(first())
-      .subscribe(post => {
-        this.post = post;
-      });
-
-     // TO DO after linking to real data base
-     this.newPost = {
-      username: this.currentUser.username,
-      content: this.inputContent
-    };
-
-    this.posts.unshift(this.newPost);
-
-    this.inputContent = "";
-  }
-
   deleteAllPosts(): void {
     console.log(this.follows);
+    console.log(this.posts);
 
     // this.postsService
     //   .deleteAll()
