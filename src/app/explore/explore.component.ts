@@ -42,9 +42,9 @@ export class ExploreComponent implements OnInit {
       });
   }
 
-  unFollowUser(userToUnfollow: string) {
+  unFollowUser(userToUnfollow: number) {
     this.userService
-      .unfollow(this.currentUser.username, userToUnfollow)
+      .unfollow(this.currentUser.id, userToUnfollow)
       .pipe(first())
       .subscribe(
         data => {

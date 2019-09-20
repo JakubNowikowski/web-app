@@ -19,6 +19,8 @@ export class HomeComponent {
   isRequesting: string;
   follows: Follow[] = [];
   followings: string[] = [];
+  isEmpty = false;
+
 
   constructor(
     private userService: UserService,
@@ -46,32 +48,50 @@ export class HomeComponent {
       });
   }
 
+  // _inputContent: string;
+  // get inputContent(): string {
+  //   return this._inputContent;
+  // }
+
+  // set inputContent(value: string) {
+  //   this._inputContent = value;
+  // }
+
   _inputContent: string;
   get inputContent(): string {
     return this._inputContent;
   }
   set inputContent(value: string) {
     this._inputContent = value;
+    this.isEmpty = this.inputContent
+      ? false
+      : true;
   }
 
-
   addPost(): void {
-    this.postsService
-      .addPost(this.currentUser.id, this.inputContent)
-      .pipe(first())
-      .subscribe(post => {
-        this.post = post;
-      });
-
-    // TO DO after linking to real data base
-    this.newPost = {
-      username: this.currentUser.username,
-      content: this.inputContent
-    };
-
-    this.posts.unshift(this.newPost);
-
-    this.inputContent = "";
+    if (!this.inputContent) {
+      this.isEmpty = true;
+    }
+    else {
+      this.postsService
+        .addPost(this.currentUser.id, this.inputContent)
+        .pipe(first())
+        .subscribe(post => {
+          this.post = post;
+        });
+        
+        
+        // TO DO after linking to real data base
+        this.newPost = {
+          username: this.currentUser.username,
+          content: this.inputContent
+        };
+        
+        this.posts.unshift(this.newPost);
+        
+        this.inputContent = null;
+        this.isEmpty = false;
+      }
   }
 
   deleteAllPosts(): void {

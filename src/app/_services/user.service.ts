@@ -39,14 +39,9 @@ export class UserService {
     return this.http.post(this.baseUrl+`users/${userId}/following/${userToFollowId}`,null);
   }
 
-  unfollow(follower: string, following: string) {
-    let params = new HttpParams()
-      .set("follower", follower)
-      .set("following", following);
-    return this.http.delete<Follow[]>(`https://localhost:44380/api/follow`, {
-      params: params
-    });
+  unfollow(userId:number,userToUnfollowId:number):Observable<object> {
+    return this.http.delete(this.baseUrl+`users/${userId}/following/${userToUnfollowId}`);
   }
-
+  
   //#endregion
 }
