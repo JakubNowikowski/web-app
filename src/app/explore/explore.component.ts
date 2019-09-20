@@ -21,7 +21,7 @@ export class ExploreComponent implements OnInit {
 
   ngOnInit() {
     this.userService
-      .getAllUsers()
+      .explore(this.currentUser.id)
       .pipe(first())
       .subscribe(users => {
         this.users = users;
@@ -32,14 +32,16 @@ export class ExploreComponent implements OnInit {
     this.userService
       .follow(this.currentUser.id, userToFollowId)
       .pipe(first())
-      .subscribe( data => {
-        // this.alertService.success("Registration successful", true);
-        // this.router.navigate(["/login"]);
-      },
-      error => {
-        console.log(error)
-        // this.loading = false;
-      });
+      .subscribe(
+        data => {
+          // this.alertService.success("Registration successful", true);
+          // this.router.navigate(["/login"]);
+        },
+        error => {
+          console.log(error);
+          // this.loading = false;
+        }
+      );
   }
 
   unFollowUser(userToUnfollow: number) {

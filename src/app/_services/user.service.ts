@@ -42,6 +42,10 @@ export class UserService {
   unfollow(userId:number,userToUnfollowId:number):Observable<object> {
     return this.http.delete(this.baseUrl+`users/${userId}/following/${userToUnfollowId}`);
   }
+
+  explore(userId: number): Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl + `users/${userId}/explore`);
+  }
   
   //#endregion
 }
