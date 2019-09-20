@@ -9,6 +9,8 @@ export class UserService {
   baseUrl: string = "https://localhost:44380/api/";
   constructor(private http: HttpClient) {}
 
+  //#region Users
+
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + "users");
   }
@@ -21,52 +23,20 @@ export class UserService {
     return this.http.delete(`users/${id}`);
   }
 
-  // getPosts(userId: number) {
-  //   return this.http.get<Post[]>(this.baseUrl + `users/${userId}/posts`);
-  // }
+  //#endregion
+
+  //#region Follows
 
   getFollowers(userId: number): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + `users/${userId}/followers`);
   }
 
-  getFollowings(userName: string) {
-    let params = new HttpParams().set("userName", userName);
-    return this.http.get<Follow[]>(
-      `https://localhost:44380/api/follow/followings`,
-      {
-        params: params
-      }
-    );
+  getFollowing(userId: number): Observable<User[]>{
+    return this.http.get<User[]>(this.baseUrl + `users/${userId}/following`);
   }
 
-  getFollowingsPromise(userName: string): Promise<Follow[]> {
-    let params = new HttpParams().set("userName", userName);
-    return this.http
-      .get<Follow[]>(`https://localhost:44380/api/follow/followings`, {
-        params: params
-      })
-      .toPromise();
-  }
-
-  // getPeople(): Promise<Array> {
-  //   return this.http
-  //     .get("api/people.json", {
-  //       headers: {
-  //         "X-Some-Header": "1234"
-  //       }
-  //     })
-  //     .map(res => {
-  //       // some manipulation
-  //       return res.json();
-  //     })
-  //     .toPromise();
-  // }
-
-  follow(followItem: Follow) {
-    return this.http.post<Follow[]>(
-      `https://localhost:44380/api/follow`,
-      followItem
-    );
+  follow(userId:number,userToFollowId:number):Observable<object> {
+    return this.http.post(this.baseUrl+`users/${userId}/following/${userToFollowId}`,null);
   }
 
   unfollow(follower: string, following: string) {
@@ -77,4 +47,6 @@ export class UserService {
       params: params
     });
   }
+
+  //#endregion
 }

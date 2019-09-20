@@ -8,7 +8,8 @@ import { first } from "rxjs/operators";
 export class MyProfileComponent implements OnInit {
   bodyText: string;
   currentUser: User;
-  followedUsers: User[];
+  following: User[];
+  followers: User[];
   follows: Follow[] = [];
 
   constructor(
@@ -24,25 +25,25 @@ export class MyProfileComponent implements OnInit {
   ngOnInit() {
     this.bodyText = "This text can be updated in modal 1";
     this.getFollowers();
+    this.getFollowing();
   }
 
   private getFollowers() {
-    console.log(this.currentUser.id);
     this.userService
       .getFollowers(this.currentUser.id)
       .pipe(first())
       .subscribe(follow => {
-        this.followedUsers = follow;
+        this.followers = follow;
       });
   }
 
-  private getFollowings() {
-    // this.userService
-    //   .getFollowingsPromise(this.currentUser.id)
-    //   .then(result => {
-    //     this.follows = result;
-    //   })
-    //   .catch(error => console.log(error));
+  private getFollowing() {
+    this.userService
+      .getFollowing(this.currentUser.id)
+      .pipe(first())
+      .subscribe(follow => {
+        this.following = follow;
+      });
   }
 
   openModal(id: string) {

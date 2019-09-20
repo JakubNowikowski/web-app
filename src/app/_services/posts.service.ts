@@ -23,45 +23,11 @@ export class PostsService {
     return this.currentPostSubject.value;
   }
 
-  getPostByUserName(followingUsers: string[]) {
-    // let followingUsers = ["user2", "user3","user4"];
-    let params = new HttpParams();
-    params = params.append("followingUsers", followingUsers.join(","));
-    // followingUsers.forEach(user => {
-    //   params = params.append("followingUsers", user);
-    // });
-    return this.http.get<Post[]>(`https://localhost:44380/api/posts`, {
-      params: params
-    });
-  }
-
-  // getPosts(currentUser: string) {
-  //   let params = new HttpParams();
-  //   params = params.append("currentUser", currentUser);
-  //   return this.http.get<Post[]>(`https://localhost:44380/api/posts`, {
-  //     params: params
-  //   });
-  // }
-
   getPosts(userId: number) {
     return this.http.get<Post[]>(this.baseUrl + `users/${userId}/posts`);
-  }
-
-  addPost(post: Post) {
-    return this.http.post(`https://localhost:44380/api/posts`, post).pipe(
-      map(user => {
-        // login successful if there's a jwt token in the response
-        if (post) {
-          // store user details and jwt token in local storage to keep user logged in between page refreshes
-          localStorage.setItem("currentPost", JSON.stringify(post));
-          this.currentPostSubject.next(post);
-        }
-        return post;
-      })
-    );
-  }
-
-  addWorkTime(userId: number, content: string) {
+  }      
+  
+  addPost(userId: number, content: string) {
     return this.http.post<Post>(this.baseUrl + `users/${userId}/posts`, {
       content: content
     });

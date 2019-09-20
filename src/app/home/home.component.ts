@@ -7,7 +7,6 @@ import { HttpClient } from "@angular/common/http";
 
 @Component({
   templateUrl: "./home.component.html"
-  // changeDetection: ChangeDetectionStrategy.Default
 })
 export class HomeComponent {
   public pageTitle = "Home";
@@ -35,42 +34,8 @@ export class HomeComponent {
   }
 
   ngOnInit() {
-    this.getAllUsers();
-
-    // this.getFollowings(); // must update immediately
-
     this.getPosts();
-
-    console.log("here");
-    console.log(this.posts);
   }
-
-  private getAllUsers() {
-    this.userService
-      .getAllUsers()
-      .pipe(first())
-      .subscribe(users => {
-        this.users = users;
-      });
-  }
-
-  private getFollowings() {
-    this.userService
-      .getFollowingsPromise(this.currentUser.username)
-      .then(result => {
-        this.follows = result;
-      })
-      .catch(error => console.log(error));
-  }
-
-  // private getFollowings(): Follow[] {
-  //   this.userService
-  //     .getFollowingsPromise(this.currentUser.username)
-  //     .then(follow => {
-  //       this.follows = follow;
-  //     });
-  //   return this.follows;
-  // }
 
   private getPosts() {
     this.postsService
@@ -89,43 +54,10 @@ export class HomeComponent {
     this._inputContent = value;
   }
 
-  // addPostOld(): void {
-  //   this.followings = this.follows.map(function(follow) {
-  //     return follow.following;
-  //   });
-  //   this.post = {
-  //     username: this.currentUser.username,
-  //     content: this.inputContent
-  //   };
-
-  // this.postsService
-  //   .addPost(this.post)
-  //   .pipe(first())
-  //   .subscribe(data => {}, error => {});
-
-  //   this.postsService
-  //     .addWorkTime(
-  //       this.currentUser.id,
-  //       "elopooooooooooooooooooooooooooooooooooooooo"
-  //     )
-  //     .subscribe(data => {}, error => {});
-
-  //   // this.postsService.currentPost.subscribe(x => (this.currentPost = x));
-
-  //   // TO DO after linking to real data base
-  //   this.newPost = {
-  //     username: this.currentUser.username,
-  //     content: this.inputContent
-  //   };
-
-  //   this.posts.unshift(this.newPost);
-
-  //   this.inputContent = "";
-  // }
 
   addPost(): void {
     this.postsService
-      .addWorkTime(this.currentUser.id, this.inputContent)
+      .addPost(this.currentUser.id, this.inputContent)
       .pipe(first())
       .subscribe(post => {
         this.post = post;

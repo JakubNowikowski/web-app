@@ -9,8 +9,6 @@ export class ExploreComponent implements OnInit {
   users: User[] = [];
   currentUser: User;
   follow: Follow;
-  followers: Follow[] = [];
-  followings: Follow[] = [];
 
   constructor(
     private userService: UserService,
@@ -28,50 +26,20 @@ export class ExploreComponent implements OnInit {
       .subscribe(users => {
         this.users = users;
       });
-
-    this.getFollowers();
-    console.log(this.followers);
-    // this.getFollowings();
   }
 
-  private getFollowers() {
-    // this.userService
-    //   .getFollowers(this.currentUser.id)
-    //   .pipe(first())
-    //   .subscribe(follow => {
-    //     this.followers = follow;
-    //   });
-  }
-
-  private getFollowings() {
+  followUser(userToFollowId: number): void {
     this.userService
-      .getFollowings(this.currentUser.username)
+      .follow(this.currentUser.id, userToFollowId)
       .pipe(first())
-      .subscribe(follow => {
-        this.followings = follow;
+      .subscribe( data => {
+        // this.alertService.success("Registration successful", true);
+        // this.router.navigate(["/login"]);
+      },
+      error => {
+        console.log(error)
+        // this.loading = false;
       });
-  }
-
-  followUser(userToFollow: string): void {
-    console.log(this.followers);
-
-    //   this.follow = {
-    //     follower: this.currentUser.username,
-    //     following: userToFollow
-    //   };
-    //   this.userService
-    //     .follow(this.follow)
-    //     .pipe(first())
-    //     .subscribe(
-    //       data => {
-    //         // this.alertService.success("Registration successful", true);
-    //         // this.router.navigate(["/login"]);
-    //       },
-    //       error => {
-    //         // this.alertService.error(error);
-    //         // this.loading = false;
-    //       }
-    //     );
   }
 
   unFollowUser(userToUnfollow: string) {
