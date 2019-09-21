@@ -9,23 +9,36 @@
     Edit profile
   </button>
 
-  <button class="btn btn-primary" (click)="openModal('followers-modal')">Followers</button>
-  <button class="btn btn-primary" (click)="openModal('following-modal')">Following</button>
+  <button class="btn btn-primary" (click)="openModal('followers-modal')">
+    Followers
+  </button>
+  <button class="btn btn-primary" (click)="openModal('following-modal')">
+    Following
+  </button>
 
   <jw-modal id="followers-modal">
     <h1>Followers</h1>
     <ul *ngIf="followers">
       <li *ngFor="let follower of followers">{{ follower.userName }}</li>
     </ul>
-    <button class="btn btn-primary" (click)="closeModal('followers-modal')">Close</button>
+    <button class="btn btn-primary" (click)="closeModal('followers-modal')">
+      Close
+    </button>
   </jw-modal>
 
   <jw-modal id="following-modal">
-      <h1>Following</h1>
+    <h1>Following</h1>
     <!-- <h1 style="height:1000px">A Tall Custom Modal!</h1> -->
     <ul *ngIf="following">
-      <li *ngFor="let follower of following">{{ follower.userName }}</li>
+      <li *ngFor="let follower of following">
+        {{ follower.userName }}
+        <button class="btn btn-primary" (click)="unFollowUser(follower.id)">
+          Unfollow
+        </button>
+      </li>
     </ul>
-    <button class="btn btn-primary" (click)="closeModal('following-modal')">Close</button>
+    <button class="btn btn-primary" (click)="closeModal('following-modal')">
+      Close
+    </button>
   </jw-modal>
 </div>

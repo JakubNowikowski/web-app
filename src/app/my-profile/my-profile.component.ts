@@ -46,6 +46,22 @@ export class MyProfileComponent implements OnInit {
       });
   }
 
+  unFollowUser(userToUnfollow: number) {
+    this.userService
+      .unfollow(this.currentUser.id, userToUnfollow)
+      .pipe(first())
+      .subscribe(
+        data => {
+          // this.alertService.success("Registration successful", true);
+          // this.router.navigate(["/login"]);
+        },
+        error => {
+          // this.alertService.error(error);
+          // this.loading = false;
+        }
+      );
+  }
+
   openModal(id: string) {
     this.modalService.open(id);
   }

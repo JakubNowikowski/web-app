@@ -1,12 +1,9 @@
-<h1>All existing accounts:</h1>
+<h1>Users to follow:</h1>
 <ul>
   <li *ngFor="let user of users">
     {{ user.userName }}
     <button class="btn btn-primary" (click)="followUser(user.id)">
       Follow
-    </button>
-    <button class="btn btn-primary" (click)="unFollowUser(user.id)">
-      Unfollow
     </button>
   </li>
 </ul>
