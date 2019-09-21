@@ -1,8 +1,16 @@
 <h1>Users to follow:</h1>
+<h3 *ngIf="clickedUsers.length == users.length">
+  You don't have any users to follow
+</h3>
 <ul>
   <li *ngFor="let user of users">
     {{ user.userName }}
-    <button class="btn btn-primary" (click)="followUser(user.id)">
+    <div *ngIf="isClicked(user.id)">You are following {{ user.userName }}!</div>
+    <button
+      *ngIf="!isClicked(user.id)"
+      class="btn btn-primary"
+      (click)="followUser(user.id)"
+    >
       Follow
     </button>
   </li>

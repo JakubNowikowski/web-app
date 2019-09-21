@@ -9,6 +9,7 @@ export class ExploreComponent implements OnInit {
   users: User[] = [];
   currentUser: User;
   follow: Follow;
+  clickedUsers: number[] = [];
 
   constructor(
     private userService: UserService,
@@ -17,6 +18,10 @@ export class ExploreComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
+  }
+
+  isClicked(userId: number): boolean {
+    return this.clickedUsers.includes(userId);
   }
 
   ngOnInit() {
@@ -34,12 +39,10 @@ export class ExploreComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          // this.alertService.success("Registration successful", true);
-          // this.router.navigate(["/login"]);
+          this.clickedUsers.push(userToFollowId);
         },
         error => {
           console.log(error);
-          // this.loading = false;
         }
       );
   }
