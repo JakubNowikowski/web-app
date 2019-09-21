@@ -20,10 +20,6 @@ export class ExploreComponent implements OnInit {
     );
   }
 
-  isClicked(userId: number): boolean {
-    return this.clickedUsers.includes(userId);
-  }
-
   ngOnInit() {
     this.userService
       .explore(this.currentUser.id)
@@ -31,6 +27,10 @@ export class ExploreComponent implements OnInit {
       .subscribe(users => {
         this.users = users;
       });
+  }
+
+  isClicked(userId: number): boolean {
+    return this.clickedUsers.includes(userId);
   }
 
   followUser(userToFollowId: number): void {

@@ -8,9 +8,10 @@ import { first } from "rxjs/operators";
 export class MyProfileComponent implements OnInit {
   bodyText: string;
   currentUser: User;
-  following: User[];
+  following: User[]=[];
   followers: User[];
   follows: Follow[] = [];
+  clickedUsers: number[] = [];
 
   constructor(
     private userService: UserService,
@@ -26,6 +27,10 @@ export class MyProfileComponent implements OnInit {
     this.bodyText = "This text can be updated in modal 1";
     this.getFollowers();
     this.getFollowing();
+  }
+
+  isClicked(userId: number): boolean {
+    return this.clickedUsers.includes(userId);
   }
 
   private getFollowers() {
@@ -52,12 +57,10 @@ export class MyProfileComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          // this.alertService.success("Registration successful", true);
-          // this.router.navigate(["/login"]);
+          this.clickedUsers.push(userToUnfollow);
         },
         error => {
-          // this.alertService.error(error);
-          // this.loading = false;
+          console.log(error);
         }
       );
   }
