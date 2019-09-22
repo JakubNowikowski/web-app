@@ -23,11 +23,17 @@ export class PostsService {
     return this.currentPostSubject.value;
   }
 
+  getFollowedPosts(userId: number) {
+    return this.http.get<Post[]>(
+      this.baseUrl + `users/${userId}/followedPosts`
+    );
+  }
+
   getPosts(userId: number) {
     return this.http.get<Post[]>(this.baseUrl + `users/${userId}/posts`);
-  }      
-  
-  addPost(userId: number, content: string) {
+  }
+
+  addPost(userId: number, content: string): Observable<Post> {
     return this.http.post<Post>(this.baseUrl + `users/${userId}/posts`, {
       content: content
     });

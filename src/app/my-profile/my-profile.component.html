@@ -51,4 +51,13 @@
       Close
     </button>
   </jw-modal>
+  <div class="text-center">
+    <h1>Your posts:</h1>  
+    <ul *ngIf="posts">
+        <li *ngFor="let post of posts">
+          {{ post.userName }} {{ post.content }}
+        </li>
+      </ul>
+      <a *ngIf="posts.length === 0">No photos found</a>
+    </div>
 </div>

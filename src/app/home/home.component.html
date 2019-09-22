@@ -6,7 +6,7 @@
     <button class="btn btn-primary" (click)="addPost()">
       Add post
     </button>
-    </div>
+  </div>
   <div class="card-header">
     {{ pageTitle }}
   </div>
@@ -19,7 +19,9 @@
     <div class="container-fluid">
       <div class="text-center">
         <ul *ngIf="posts">
-          <li *ngFor="let post of posts">{{ post.content }}</li>
+          <li *ngFor="let post of posts">
+            {{ post.userName }} {{ post.content }}
+          </li>
         </ul>
         <a *ngIf="posts.length === 0">No photos found</a>
       </div>

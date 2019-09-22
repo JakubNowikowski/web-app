@@ -1,20 +1,22 @@
 import { Component, OnInit } from "@angular/core";
 import { ModalService } from "../_modalWindow/modal.service";
-import { Follow, User } from "../_models";
-import { UserService, AuthenticationService } from "../_services";
+import { Follow, User, Post } from "../_models";
+import { UserService, AuthenticationService, PostsService } from "../_services";
 import { first } from "rxjs/operators";
 
 @Component({ templateUrl: "my-profile.component.html" })
 export class MyProfileComponent implements OnInit {
   bodyText: string;
   currentUser: User;
-  following: User[]=[];
+  following: User[] = [];
   followers: User[];
   follows: Follow[] = [];
   clickedUsers: number[] = [];
+  posts: Post[] = [];
 
   constructor(
     private userService: UserService,
+    private postsService: PostsService,
     private authenticationService: AuthenticationService,
     private modalService: ModalService
   ) {
@@ -24,13 +26,22 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.bodyText = "This text can be updated in modal 1";
+    this.getPosts();
     this.getFollowers();
     this.getFollowing();
   }
 
   isClicked(userId: number): boolean {
     return this.clickedUsers.includes(userId);
+  }
+
+  private getPosts() {
+    this.postsService
+      .getPosts(this.currentUser.id)
+      .pipe(first())
+      .subscribe(posts => {
+        this.posts = posts;
+      });
   }
 
   private getFollowers() {

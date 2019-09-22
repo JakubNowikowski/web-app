@@ -41,7 +41,7 @@ export class HomeComponent {
 
   private getPosts() {
     this.postsService
-      .getPosts(this.currentUser.id)
+      .getFollowedPosts(this.currentUser.id)
       .pipe(first())
       .subscribe(posts => {
         this.posts = posts;
