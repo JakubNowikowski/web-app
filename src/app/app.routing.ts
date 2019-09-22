@@ -7,6 +7,7 @@ import { AuthGuard } from "./_helpers";
 import { ProductListComponent } from "./products/product-list.component";
 import { MyProfileComponent } from "./my-profile";
 import { ExploreComponent } from "./explore/explore.component";
+import { EditComponent } from "./edit/edit.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent, canActivate: [AuthGuard] },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: "register", component: RegisterComponent },
   { path: "explore", component: ExploreComponent },
   { path: "profile", component: MyProfileComponent },
+  { path: "edit", component: EditComponent },
   { path: "products", component: ProductListComponent },
 
   // otherwise redirect to home
