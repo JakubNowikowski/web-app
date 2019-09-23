@@ -21,6 +21,13 @@
         <ul *ngIf="posts">
           <li *ngFor="let post of posts">
             {{ post.userName }} {{ post.content }}
+            <button
+              *ngIf="post.userName == currentUser.username"
+              class="btn btn-primary"
+              (click)="deletePost(post.id)"
+            >
+              Delete
+            </button>
           </li>
         </ul>
         <a *ngIf="posts.length === 0">No photos found</a>

@@ -88,6 +88,20 @@ export class HomeComponent {
     }
   }
 
+  deletePost(postId: number) {
+    this.postsService
+      .delete(this.currentUser.id, postId)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.getPosts();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
   deleteAllPosts(): void {
     console.log(this.follows);
     console.log(this.posts);
