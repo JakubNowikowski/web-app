@@ -21,7 +21,6 @@ export class HomeComponent {
   followings: string[] = [];
   isEmpty = false;
 
-
   constructor(
     private userService: UserService,
     private postsService: PostsService,
@@ -63,35 +62,31 @@ export class HomeComponent {
   }
   set inputContent(value: string) {
     this._inputContent = value;
-    this.isEmpty = this.inputContent
-      ? false
-      : true;
+    this.isEmpty = this.inputContent ? false : true;
   }
 
   addPost(): void {
     if (!this.inputContent) {
       this.isEmpty = true;
-    }
-    else {
+    } else {
       this.postsService
         .addPost(this.currentUser.id, this.inputContent)
         .pipe(first())
         .subscribe(post => {
           this.post = post;
         });
-        
-        
-        // TO DO after linking to real data base
-        this.newPost = {
-          username: this.currentUser.username,
-          content: this.inputContent
-        };
-        
-        this.posts.unshift(this.newPost);
-        
-        this.inputContent = null;
-        this.isEmpty = false;
-      }
+
+      // TO DO after linking to real data base
+      this.newPost = {
+        username: this.currentUser.username,
+        content: this.inputContent
+      };
+
+      this.posts.unshift(this.newPost);
+
+      this.inputContent = null;
+      this.isEmpty = false;
+    }
   }
 
   deleteAllPosts(): void {

@@ -39,8 +39,8 @@ export class PostsService {
     });
   }
 
-  delete(id: number) {
-    return this.http.delete(`/users/${id}`);
+  delete(userId: number, postId: number):Observable<object> {
+    return this.http.delete(this.baseUrl + `users/${userId}/posts/${postId}`);
   }
 
   deleteAll() {

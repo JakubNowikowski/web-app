@@ -44,6 +44,20 @@ export class MyProfileComponent implements OnInit {
       });
   }
 
+  deletePost(postId: number) {
+    this.postsService
+      .delete(this.currentUser.id, postId)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.getPosts();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
   private getFollowers() {
     this.userService
       .getFollowers(this.currentUser.id)
