@@ -47,15 +47,6 @@ export class HomeComponent {
       });
   }
 
-  // _inputContent: string;
-  // get inputContent(): string {
-  //   return this._inputContent;
-  // }
-
-  // set inputContent(value: string) {
-  //   this._inputContent = value;
-  // }
-
   _inputContent: string;
   get inputContent(): string {
     return this._inputContent;
@@ -72,17 +63,25 @@ export class HomeComponent {
       this.postsService
         .addPost(this.currentUser.id, this.inputContent)
         .pipe(first())
-        .subscribe(post => {
-          this.post = post;
-        });
+        // .subscribe(post => {
+        //   this.post = post;
+        // });
+        .subscribe(
+          data => {
+            this.getPosts();
+          },
+          error => {
+            console.log(error);
+          }
+        );
 
       // TO DO after linking to real data base
-      this.newPost = {
-        username: this.currentUser.username,
-        content: this.inputContent
-      };
+      // this.newPost = {
+      //   username: this.currentUser.username,
+      //   content: this.inputContent
+      // };
 
-      this.posts.unshift(this.newPost);
+      // this.posts.unshift(this.newPost);
 
       this.inputContent = null;
       this.isEmpty = false;
