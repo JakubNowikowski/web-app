@@ -1,12 +1,17 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-    <a class="nav-item nav-link" routerLink="/">Home</a>
+<nav class="navbar navbar-expand navbar-light bg-light" *ngIf="currentUser">
+    <!-- <a class="nav-item nav-link" routerLink="/">Home</a> -->
+    <a class="navbar-brand" href="#">
+      <img
+        src="/docs/4.3/assets/brand/bootstrap-solid.svg"
+        width="30"
+        height="30"
+        alt=""
+      />
+    </a>
     <a class="nav-item nav-link" routerLink="/explore">Explore</a>
     <a class="nav-item nav-link" routerLink="/profile">My profile</a>
-    <a class="nav-item nav-link" routerLink="/products">Products</a>
     <a class="nav-item nav-link" (click)="logout()">Logout</a>
-  </div>
 </nav>
 <a class="nav-item nav-link" *ngIf="currentUser">
   Hello {{ currentUser.firstName }}!</a
