@@ -1,27 +1,49 @@
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-light bg-light" *ngIf="currentUser">
-    <!-- <a class="nav-item nav-link" routerLink="/">Home</a> -->
-    <a class="navbar-brand" href="#">
-      <img
-        src="/docs/4.3/assets/brand/bootstrap-solid.svg"
-        width="30"
-        height="30"
-        alt=""
-      />
-    </a>
-    <a class="nav-item nav-link" routerLink="/explore">Explore</a>
-    <a class="nav-item nav-link" routerLink="/profile">My profile</a>
-    <a class="nav-item nav-link" (click)="logout()">Logout</a>
-</nav>
-<a class="nav-item nav-link" *ngIf="currentUser">
+<div class="navbar custom" *ngIf="currentUser">
+  <i class="material-icons nav" routerLink="/" data-md-tooltip="Home">home</i>
+  <i class="material-icons nav" routerLink="/explore" data-md-tooltip="Explore"
+    >explore</i
+  >
+  <i class="material-icons nav" routerLink="/profile" data-md-tooltip="Profile"
+    >account_circle</i
+  >
+  <i class="material-icons nav" (click)="logout()" data-md-tooltip="Logout"
+    >exit_to_app</i
+  >
+</div>
+
+<!-- <a class="nav-item nav-link" *ngIf="currentUser">
   Hello {{ currentUser.firstName }}!</a
->
+> -->
+
+<!-- <mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <h1>SimpleCRM</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/accounts'"> Accounts </a>
+      <a mat-button [routerLink]="'/create-account'"> Create Account </a>
+      <a mat-button [routerLink]="'/contacts'"> Contacts </a>
+      <a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
+      <a mat-button [routerLink]="'/activities'"> Activities </a>
+      <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span style="font-size: 12px;"
+      >SimpleCRM helps you easily manage your contacts</span
+    >
+  </mat-toolbar-row>
+</mat-toolbar> -->
 
 <!-- main app container -->
-<div class="jumbotron bg-dark">
+<div class="jumbotron bg-light">
   <div class="container">
     <div class="row">
-      <div class="col-sm-6 offset-sm-3 bg-dark">
+      <div class="col-sm-6 offset-sm-3 bg-light">
         <alert></alert>
         <router-outlet></router-outlet>
       </div>

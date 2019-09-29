@@ -20,7 +20,17 @@ import { StarComponent } from "./shared/star.component";
 import { MyProfileComponent } from "./my-profile/my-profile.component";
 import { ExploreComponent } from "./explore/explore.component";
 import { ModalModule } from "./_modalWindow/modal.module";
-import { EditComponent } from './edit/edit.component';
+import { EditComponent } from "./edit/edit.component";
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatCardModule,
+  MatMenuModule,
+  MatIconModule
+} from "@angular/material";
 
 @NgModule({
   imports: [
@@ -29,7 +39,10 @@ import { EditComponent } from './edit/edit.component';
     ReactiveFormsModule,
     HttpClientModule,
     ModalModule,
-    appRoutingModule
+    appRoutingModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   declarations: [
     AppComponent,
