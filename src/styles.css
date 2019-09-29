@@ -10,6 +10,19 @@ div.card {
   margin-top: 10px;
 }
 
+div.newPostHeader {
+  width: 80vw;
+  padding: 0.8rem 0.125rem 0.1rem 1.1rem;
+  margin-bottom: 20px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+div.addPost {
+  /* padding: 0.8rem 0.125rem 0.1rem 1.1rem; */
+  margin-bottom: 1px;
+}
+
 .table {
   margin-top: 10px;
 }
@@ -34,14 +47,18 @@ div.card {
 }
 
 .material-icons.small {
-  font-size: 10px;
+  font-size: 20px;
 }
 
 .material-icons.nav {
   font-size: 50px;
 }
 
-.material-icons.nav:hover {
+.material-icons.sendBtn {
+  font-size: 40px;
+}
+
+.material-icons:hover {
   color: #bdeee8;
 }
 

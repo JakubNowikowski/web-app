@@ -1,20 +1,21 @@
-﻿<div class="card">
-  <div class="col-md-6">
-    <p>
-      Make new post
-    </p>
+﻿<div class="container-fluid">
+  <div class="row">
+    <div class="newPostHeader col-md-11">
+      <p>
+        Make new post
+      </p>
+    </div>
   </div>
-  <div class="form-group">
-    <input type="text" [(ngModel)]="inputContent" class="form-control" />
+
+  <div class="row">
+    <input
+      type="text"
+      [(ngModel)]="inputContent"
+      class="col-md-10 form-control"
+    />
     <div *ngIf="isEmpty">Cannot add an empty post!</div>
-    <i class="material-icons nav" (click)="addPost()">send</i>
+    <i class="col-md-2 material-icons sendBtn" (click)="addPost()">send</i>
   </div>
-  <div class="card-header">
-    {{ pageTitle }}
-  </div>
-  <ul *ngIf="follows">
-    <li *ngFor="let follow of follows">{{ follow.following }}</li>
-  </ul>
 
   <div class="card-body">
     <div class="container-fluid">
@@ -24,13 +25,13 @@
             {{ post.userName }} {{ post.content }}
             <i
               *ngIf="post.userName == currentUser.username"
-              class="material-icons"
+              class="material-icons small"
               (click)="deletePost(post.id)"
               >cancel</i
             >
           </li>
         </ul>
-        <a *ngIf="posts.length === 0">No photos found</a>
+        <a *ngIf="posts.length === 0">No posts found</a>
       </div>
     </div>
   </div>
