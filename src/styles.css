@@ -14,7 +14,21 @@ div.newPostHeader {
   width: 80vw;
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
   margin-bottom: 20px;
-  background-color: rgba(0, 0, 0, 0.03);
+  background-color: rgb(77, 215, 199, 0.7);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+div.postHeader {
+  padding: 0.8rem 0.125rem 0.1rem 1.1rem;
+  /* margin-bottom: 20px; */
+  background-color: rgb(77, 215, 199, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+div.postBody {
+  padding: 0.8rem 0.125rem 0.1rem 1.1rem;
+  margin-bottom: 20px;
+  background-color: white;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -63,8 +77,22 @@ div.addPost {
 }
 
 p {
+  color: rgb(100, 96, 96);
   font-family: Open Sans, sans-serif;
   /* font-family:georgia,garamond,serif;font-size:16px;font-style:italic; */
+}
+
+p.user {
+  color: rgb(100, 96, 96, 0.8);
+  font-weight: 600;
+}
+
+p.post {
+  color: rgb(39, 37, 37);
+}
+
+ul {
+  list-style-type: none;
 }
 
 [data-md-tooltip] {

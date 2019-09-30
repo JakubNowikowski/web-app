@@ -1,6 +1,6 @@
 ﻿<div class="container-fluid">
   <div class="row">
-    <div class="newPostHeader col-md-11">
+    <div class="newPostHeader">
       <p>
         Make new post
       </p>
@@ -8,31 +8,37 @@
   </div>
 
   <div class="row">
-    <input
-      type="text"
-      [(ngModel)]="inputContent"
-      class="col-md-10 form-control"
-    />
+    <div class="col-md-10">
+      <input type="text" [(ngModel)]="inputContent" class="form-control" />
+    </div>
     <div *ngIf="isEmpty">Cannot add an empty post!</div>
-    <i class="col-md-2 material-icons sendBtn" (click)="addPost()">send</i>
+    <div class="col-md-2">
+      <i class="material-icons sendBtn" (click)="addPost()">send</i>
+    </div>
   </div>
 
-  <div class="card-body">
-    <div class="container-fluid">
-      <div class="text-center">
-        <ul *ngIf="posts">
-          <li *ngFor="let post of posts">
-            {{ post.userName }} {{ post.content }}
-            <i
-              *ngIf="post.userName == currentUser.username"
-              class="material-icons small"
-              (click)="deletePost(post.id)"
-              >cancel</i
-            >
-          </li>
-        </ul>
-        <a *ngIf="posts.length === 0">No posts found</a>
-      </div>
-    </div>
+  <div class="row">
+    <ul class="col-md-12" *ngIf="posts">
+      <li *ngFor="let post of posts">
+        <div class="postHeader col-md-12">
+          <p class="user">
+            {{ post.userName }}
+          </p>
+        </div>
+
+        <div class="postBody col-md-12">
+          <p class="post">
+            {{ post.content }}
+          </p>
+          <i
+            *ngIf="post.userName == currentUser.username"
+            class="material-icons small"
+            (click)="deletePost(post.id)"
+            >cancel</i
+          >
+        </div>
+      </li>
+    </ul>
+    <a *ngIf="posts.length === 0">No posts found</a>
   </div>
 </div>
