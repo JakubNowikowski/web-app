@@ -1,17 +1,42 @@
-<h1>Users to follow:</h1>
-<h3 *ngIf="clickedUsers.length == users.length">
-  You don't have any users to follow
-</h3>
-<ul>
-  <li *ngFor="let user of users">
-    {{ user.userName }}
-    <div *ngIf="isClicked(user.id)">You are following {{ user.userName }}!</div>
-    <button
-      *ngIf="!isClicked(user.id)"
-      class="btn btn-primary"
-      (click)="followUser(user.id)"
-    >
-      Follow
-    </button>
-  </li>
-</ul>
+<div class="container-fluid">
+  <div class="row">
+    <div class="newPostHeader">
+      <h2>Users to follow</h2>
+    </div>
+    <h3 *ngIf="clickedUsers.length == users.length">
+      You don't have any users to follow
+    </h3>
+  </div>
+
+  <div class="row">
+    <div class="followList">
+
+      <ul>
+        <li *ngFor="let user of users">
+        <div class="follow">
+          <div>
+            <p class="user">
+              {{ user.userName }}
+            </p>
+            <div *ngIf="isClicked(user.id)">
+              You are following {{ user.userName }}!
+            </div>
+          </div>
+          <div>
+            <i class="material-icons person">person</i>
+          </div>
+          <div class="col-md-12">
+            <button
+            *ngIf="!isClicked(user.id)"
+            class="btn btn-light"
+            (click)="followUser(user.id)"
+            >
+            Follow
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+  </div>
+</div>

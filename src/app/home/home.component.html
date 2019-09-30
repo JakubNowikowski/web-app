@@ -1,14 +1,14 @@
 ﻿<div class="container-fluid">
   <div class="row">
     <div class="newPostHeader">
-      <p>
+      <h2>
         Make new post
-      </p>
+      </h2>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-10">
+    <div class="newPostBody col-md-10">
       <input type="text" [(ngModel)]="inputContent" class="form-control" />
     </div>
     <div *ngIf="isEmpty">Cannot add an empty post!</div>
@@ -21,9 +21,12 @@
     <ul class="col-md-12" *ngIf="posts">
       <li *ngFor="let post of posts">
         <div class="postHeader col-md-12">
-          <p class="user">
-            {{ post.userName }}
-          </p>
+          <div class="row">
+            <i class="col-md-2 material-icons person">person</i>
+            <p class="col-md-10 user">
+              {{ post.userName }}
+            </p>
+          </div>
         </div>
 
         <div class="postBody col-md-12">

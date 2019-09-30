@@ -18,6 +18,10 @@ div.newPostHeader {
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
 
+div.newPostBody {
+  margin-bottom: 40px;
+}
+
 div.postHeader {
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
   /* margin-bottom: 20px; */
@@ -27,14 +31,23 @@ div.postHeader {
 
 div.postBody {
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
-  margin-bottom: 20px;
   background-color: white;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  margin-bottom: 30px;
 }
 
 div.addPost {
-  /* padding: 0.8rem 0.125rem 0.1rem 1.1rem; */
   margin-bottom: 1px;
+}
+
+div.follow {
+  padding: 0.8rem 0.125rem 0.1rem 1.1rem;
+  margin-bottom: 20px;
+  background-color: rgb(77, 215, 199, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+div.followList {
+  margin: auto;
 }
 
 .table {
@@ -68,12 +81,27 @@ div.addPost {
   font-size: 50px;
 }
 
+.material-icons.person {
+  cursor: default;
+  font-size: 60px;
+}
+
 .material-icons.sendBtn {
   font-size: 40px;
 }
 
-.material-icons:hover {
+.material-icons.nav:hover,
+.material-icons.small:hover,
+.material-icons.sendBtn:hover {
   color: #bdeee8;
+}
+
+.btn-light {
+  background: #4dd7c8;
+}
+
+h2 {
+  color: #efefef;
 }
 
 p {
@@ -83,6 +111,7 @@ p {
 }
 
 p.user {
+  padding: 0.8rem 0.125rem 0.1rem 1.1rem;
   color: rgb(100, 96, 96, 0.8);
   font-weight: 600;
 }
