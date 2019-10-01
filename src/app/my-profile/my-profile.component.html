@@ -1,56 +1,39 @@
-<div>
-  <button class="btn btn-primary">
-    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-    Add photo
-  </button>
-  <button class="btn btn-primary" routerLink="/edit">
-    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-    Edit profile
-  </button>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <i class="material-icons person-profile">person</i>
+    </div>
 
-  <button class="btn btn-primary" (click)="openModal('followers-modal')">
-    Followers
-  </button>
-  <button class="btn btn-primary" (click)="openModal('following-modal')">
-    Following
-  </button>
-
-  <jw-modal id="followers-modal">
-    <h1>Followers</h1>
-    <ul *ngIf="followers">
-      <li *ngFor="let user of followers">{{ user.userName }}</li>
-    </ul>
-    <button class="btn btn-primary" (click)="closeModal('followers-modal')">
-      Close
-    </button>
-  </jw-modal>
-
-  <jw-modal id="following-modal">
-    <h1>Following</h1>
-    <h3 *ngIf="clickedUsers.length == following.length">
-      You don't follow any users
-    </h3>
-    <!-- <h1 style="height:1000px">A Tall Custom Modal!</h1> -->
-    <ul *ngIf="following">
-      <li *ngFor="let user of following">
-        {{ user.userName }}
-        <div *ngIf="isClicked(user.id)">
-          You unfollowed {{ user.userName }}!
-        </div>
+    <div class="col">
+      <div class="row">
         <button
-          *ngIf="!isClicked(user.id)"
-          class="btn btn-primary"
-          (click)="unFollowUser(user.id)"
+          class="btn btn-light-profile"
+          (click)="openModal('followers-modal')"
         >
-          Unfollow
+          Followers
         </button>
-      </li>
-    </ul>
-    <button class="btn btn-primary" (click)="closeModal('following-modal')">
-      Close
-    </button>
-  </jw-modal>
-  <div class="text-center">
+      </div>
+
+      <div class="row">
+        <button
+          class="btn btn-light-profile"
+          (click)="openModal('following-modal')"
+        >
+          Following
+        </button>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-light-profile" routerLink="/edit">
+          Edit profile
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Posts -->
+
+  <div class="row">
     <h1>Your posts:</h1>
     <ul *ngIf="posts">
       <li *ngFor="let post of posts">
@@ -60,6 +43,48 @@
         </button>
       </li>
     </ul>
-    <a *ngIf="posts.length === 0">No photos found</a>
+    <a *ngIf="posts.length === 0">No posts found</a>
   </div>
 </div>
+
+<!--  -->
+<!--  -->
+<!--  -->
+
+<!-- Followers modal -->
+
+<jw-modal id="followers-modal">
+  <h1>Followers</h1>
+  <ul *ngIf="followers">
+    <li *ngFor="let user of followers">{{ user.userName }}</li>
+  </ul>
+  <button class="btn btn-light" (click)="closeModal('followers-modal')">
+    Close
+  </button>
+</jw-modal>
+
+<!-- Following modal -->
+
+<jw-modal id="following-modal">
+  <h1>Following</h1>
+  <h3 *ngIf="clickedUsers.length == following.length">
+    You don't follow any users
+  </h3>
+  <!-- <h1 style="height:1000px">A Tall Custom Modal!</h1> -->
+  <ul *ngIf="following">
+    <li *ngFor="let user of following">
+      {{ user.userName }}
+      <div *ngIf="isClicked(user.id)">You unfollowed {{ user.userName }}!</div>
+      <button
+        *ngIf="!isClicked(user.id)"
+        class="btn btn-light"
+        (click)="unFollowUser(user.id)"
+      >
+        Unfollow
+      </button>
+    </li>
+  </ul>
+  <button class="btn btn-light" (click)="closeModal('following-modal')">
+    Close
+  </button>
+</jw-modal>

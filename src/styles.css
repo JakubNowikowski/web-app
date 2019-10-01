@@ -2,8 +2,6 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
-
-
 /*#region Tags*/
 
 h2 {
@@ -102,6 +100,12 @@ div.followList {
   text-align: center;
 }
 
+.material-icons.person-profile {
+  cursor: default;
+  font-size: 120px;
+  text-align: center;
+}
+
 .material-icons.sendBtn {
   font-size: 40px;
 }
@@ -115,6 +119,15 @@ div.followList {
 /*#endregion */
 
 .btn-light {
+  color: #efefef;
+  font-weight: 600;
+  background: #4dd7c8;
+  margin: auto;
+}
+
+.btn-light-profile {
+  width: 110px;
+  margin-bottom: 5px;
   color: #efefef;
   font-weight: 600;
   background: #4dd7c8;
