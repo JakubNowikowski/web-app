@@ -2,13 +2,35 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
-div.card-header {
-  font-size: large;
+
+
+/*#region Tags*/
+
+h2 {
+  color: #efefef;
 }
 
-div.card {
-  margin-top: 10px;
+p {
+  color: rgb(100, 96, 96);
+  font-family: Open Sans, sans-serif;
 }
+
+p.user {
+  color: rgb(100, 96, 96, 0.8);
+  font-weight: 600;
+}
+
+p.post {
+  color: rgb(39, 37, 37);
+}
+
+ul {
+  list-style-type: none;
+}
+
+/*#endregion */
+
+/*#region Posts*/
 
 div.newPostHeader {
   width: 80vw;
@@ -39,6 +61,10 @@ div.addPost {
   margin-bottom: 1px;
 }
 
+/*#endregion */
+
+/*#region Follows*/
+
 div.follow {
   width: 150px;
   border-radius: 25px;
@@ -53,23 +79,9 @@ div.followList {
   margin: auto;
 }
 
-.table {
-  margin-top: 10px;
-}
+/*#endregion */
 
-.nav-link {
-  font-size: large;
-}
-
-.navbar.custom {
-  width: 50%;
-  left: 25%;
-  color: #e9ebee;
-}
-
-.body-custom {
-  color: #e9ebee;
-}
+/*#region Icons*/
 
 .material-icons {
   cursor: pointer;
@@ -100,33 +112,15 @@ div.followList {
   color: #bdeee8;
 }
 
+/*#endregion */
+
 .btn-light {
   color: #efefef;
   font-weight: 600;
   background: #4dd7c8;
 }
 
-h2 {
-  color: #efefef;
-}
-
-p {
-  color: rgb(100, 96, 96);
-  font-family: Open Sans, sans-serif;
-}
-
-p.user {
-  color: rgb(100, 96, 96, 0.8);
-  font-weight: 600;
-}
-
-p.post {
-  color: rgb(39, 37, 37);
-}
-
-ul {
-  list-style-type: none;
-}
+/*#region Tooltip*/
 
 [data-md-tooltip] {
   position: relative;
@@ -149,4 +143,32 @@ ul {
 }
 [data-md-tooltip]:hover:before {
   transform: translateX(-50%) scale(1);
+}
+
+/*#endregion */
+
+.table {
+  margin-top: 10px;
+}
+
+.nav-link {
+  font-size: large;
+}
+
+.navbar.custom {
+  width: 50%;
+  left: 25%;
+  color: #e9ebee;
+}
+
+.body-custom {
+  color: #e9ebee;
+}
+
+div.card-header {
+  font-size: large;
+}
+
+div.card {
+  margin-top: 10px;
 }
