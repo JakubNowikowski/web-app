@@ -1,4 +1,4 @@
 export class Post {
-  username: string;
+  userName: string;
   content: string;
 }

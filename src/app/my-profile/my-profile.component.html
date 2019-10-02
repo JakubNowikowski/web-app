@@ -39,33 +39,32 @@
   </div>
 
   <div class="row">
-      <ul class="col-md-12" *ngIf="posts">
-        <li *ngFor="let post of posts">
-          <div class="postHeader col-md-12">
-            <div class="row">
-              <i class="col-md-2 material-icons person">person</i>
-              <p class="col-md-10 user">
-                {{ post.username }}
-              </p>
-            </div>
-          </div>
-  
-          <div class="postBody col-md-12">
-            <p class="post">
-              {{ post.content }}
+    <ul class="col-md-12"
+        *ngIf="posts">
+      <li *ngFor="let post of posts">
+        <div class="postHeader col-md-12">
+          <div class="row">
+            <i class="col-md-2 material-icons person">person</i>
+            <p class="col-md-10 user">
+              {{ post.username }}
             </p>
-            <i
-              class="material-icons small"
-              (click)="deletePost(post.id)"
-              >cancel</i
-            >
           </div>
-        </li>
-      </ul>
-      <div *ngIf="posts.length === 0" class="notFound">
-        <p class="post" >No posts found</p>
-      </div>
+        </div>
+
+        <div class="postBody col-md-12">
+          <p class="post">
+            {{ post.content }}
+          </p>
+          <i class="material-icons small"
+             (click)="deletePost(post.id)">cancel</i>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="posts.length === 0"
+         class="notFound">
+      <p class="post">No posts found</p>
     </div>
+  </div>
 
 
 
@@ -78,14 +77,42 @@
 <!-- Followers modal -->
 
 <jw-modal id="followers-modal">
-  <h1>Followers</h1>
-  <ul *ngIf="followers">
-    <li *ngFor="let user of followers">{{ user.userName }}</li>
-  </ul>
-  <button class="btn btn-light"
-          (click)="closeModal('followers-modal')">
-    Close
-  </button>
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="titleHeader-follows">
+        <h1>Followers</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="scrollbar scrollbar-primary">
+
+        <div class="followList">
+          <div *ngIf="followers.length === 0"
+               class="notFound">
+            <p class="post">You don't have any followers</p>
+          </div>
+          <ul *ngIf="followers">
+            <li *ngFor="let user of followers">
+              <div class="follow small">
+                <i class="material-icons person-small">person</i>
+                    <p class="user">
+                      {{ user.username }}
+                    </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="btn btn-light"
+            (click)="closeModal('followers-modal')">
+      Close
+    </button>
+  </div>
 </jw-modal>
 
 <!-- Following modal -->

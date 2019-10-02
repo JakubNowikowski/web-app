@@ -3,40 +3,38 @@
     <div class="titleHeader">
       <h2>Users to follow</h2>
     </div>
-    <div *ngIf="clickedUsers.length == users.length" class="notFound">
-        <p class="post" >You don't have any users to follow</p>
-      </div>
+    <div *ngIf="clickedUsers.length == users.length"
+         class="notFound">
+      <p class="post">You don't have any users to follow</p>
+    </div>
   </div>
 
   <div class="row">
     <div class="followList">
-
       <ul>
         <li *ngFor="let user of users">
-        <div class="follow">
-          <div>
-            <p class="user">
-              {{ user.userName }}
-            </p>
-            <div *ngIf="isClicked(user.id)">
-              You are following {{ user.userName }}!
+          <div class="follow">
+            <div>
+              <p class="user">
+                {{ user.userName }}
+              </p>
+              <div *ngIf="isClicked(user.id)">
+                You are following {{ user.userName }}!
+              </div>
+            </div>
+            <div>
+              <i class="material-icons person">person</i>
+            </div>
+            <div class="col-md-12">
+              <button *ngIf="!isClicked(user.id)"
+                      class="btn btn-light"
+                      (click)="followUser(user.id)">
+                Follow
+              </button>
             </div>
           </div>
-          <div>
-            <i class="material-icons person">person</i>
-          </div>
-          <div class="col-md-12">
-            <button
-            *ngIf="!isClicked(user.id)"
-            class="btn btn-light"
-            (click)="followUser(user.id)"
-            >
-            Follow
-          </button>
-        </div>
-      </div>
-    </li>
-  </ul>
-</div>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

@@ -30,12 +30,30 @@ div.titleHeader {
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
 
+div.titleHeader-follows {
+  width: 80vw;
+  padding: 0.8rem 0.125rem 0.1rem 1.1rem;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+  color: #4dd7c8;
+}
+
 div.notFound{
   margin: auto;
 }
 
-
 .top-buffer { margin-top:30px; }
+
+div.jw-modal-body{
+  position:fixed;
+    top: 50%;
+    left: 50%;
+    /* width:30em; */
+    height:18em;
+    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+}
 
 /*#endregion */
 
@@ -84,6 +102,10 @@ div.follow {
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+div.follow.small {
+ display: inline-flex;
+}
+
 div.followList {
   margin: auto;
 }
@@ -109,6 +131,11 @@ div.followList {
   cursor: default;
   font-size: 60px;
   text-align: center;
+}
+
+.material-icons.person-small {
+  cursor: default;
+  font-size: 35px;
 }
 
 .material-icons.person-profile {
@@ -171,6 +198,28 @@ div.followList {
 
 /*#endregion */
 
+/*#region Scrollbar*/
+
+.scrollbar {
+  height: 300px;
+  background: #fff;
+  overflow-y: scroll;
+  margin-bottom: 25px;
+  margin: auto;
+  width: 250px;
+  }
+    
+  .scrollbar-primary::-webkit-scrollbar {
+  width: auto;
+   }
+  
+  .scrollbar-primary::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #dfdfdf; }
+  
+/*#endregion */
+
 .table {
   margin-top: 10px;
 }
@@ -199,3 +248,8 @@ div.card {
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+
+
+  
