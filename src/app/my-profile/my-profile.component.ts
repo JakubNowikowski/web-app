@@ -6,24 +6,9 @@ import { first } from "rxjs/operators";
 
 @Component({ templateUrl: "my-profile.component.html" })
 export class MyProfileComponent implements OnInit {
-  bodyText: string;
   currentUser: User;
-  following: User[] = [   {firstName:"",token:"",password:"",lastName:"",id:1,username:"133413413"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User1"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"}];
-  followers: User[]=[   {firstName:"",token:"",password:"",lastName:"",id:1,username:"133413413"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User1"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
-  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"}];
+  following: User[] = [];
+  followers: User[] = [];
   follows: Follow[] = [];
   clickedUsers: number[] = [];
   posts: Post[] = [];

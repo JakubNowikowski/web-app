@@ -1,27 +1,35 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col">
-      <i class="material-icons person-profile">person</i>
+      <div class="row">
+        <h3 class="center-align">{{ currentUser.username }}</h3>
+      </div>
+      <div class="row">
+        <i class="material-icons person-profile">person</i>
+      </div>
     </div>
 
     <div class="col">
       <div class="row">
-        <button class="btn btn-light-profile"
-                (click)="openModal('followers-modal')">
+        <button
+          class="btn btn-light-profile"
+          (click)="openModal('followers-modal')"
+        >
           Followers
         </button>
       </div>
 
       <div class="row">
-        <button class="btn btn-light-profile"
-                (click)="openModal('following-modal')">
+        <button
+          class="btn btn-light-profile"
+          (click)="openModal('following-modal')"
+        >
           Following
         </button>
       </div>
 
       <div class="row">
-        <button class="btn btn-light-profile"
-                routerLink="/edit">
+        <button class="btn btn-light-profile" routerLink="/edit">
           Edit profile
         </button>
       </div>
@@ -39,8 +47,7 @@
   </div>
 
   <div class="row">
-    <ul class="col-md-12"
-        *ngIf="posts">
+    <ul class="col-md-12" *ngIf="posts">
       <li *ngFor="let post of posts">
         <div class="postHeader col-md-12">
           <div class="row">
@@ -55,19 +62,16 @@
           <p class="post">
             {{ post.content }}
           </p>
-          <i class="material-icons small"
-             (click)="deletePost(post.id)">cancel</i>
+          <i class="material-icons small" (click)="deletePost(post.id)"
+            >cancel</i
+          >
         </div>
       </li>
     </ul>
-    <div *ngIf="posts.length === 0"
-         class="notFound">
+    <div *ngIf="posts.length === 0" class="notFound">
       <p class="post">No posts found</p>
     </div>
   </div>
-
-
-
 </div>
 
 <!--  -->
@@ -78,7 +82,6 @@
 
 <jw-modal id="followers-modal">
   <div class="container-fluid">
-
     <div class="row">
       <div class="titleHeader-follows">
         <h1>Followers</h1>
@@ -87,29 +90,25 @@
 
     <div class="row">
       <div class="scrollbar scrollbar-primary">
-
         <div class="followList">
-          <div *ngIf="followers.length === 0"
-               class="notFound">
+          <div *ngIf="followers.length === 0" class="notFound">
             <p class="post">You don't have any followers</p>
           </div>
           <ul *ngIf="followers">
             <li *ngFor="let user of followers">
               <div class="follow small">
                 <i class="material-icons person-small">person</i>
-                    <p class="user">
-                      {{ user.username }}
-                    </p>
+                <p class="user">
+                  {{ user.userName }}
+                </p>
               </div>
             </li>
           </ul>
         </div>
-
       </div>
     </div>
 
-    <button class="btn btn-light"
-            (click)="closeModal('followers-modal')">
+    <button class="btn btn-light" (click)="closeModal('followers-modal')">
       Close
     </button>
   </div>
@@ -118,24 +117,43 @@
 <!-- Following modal -->
 
 <jw-modal id="following-modal">
-  <h1>Following</h1>
-  <h3 *ngIf="clickedUsers.length == following.length">
-    You don't follow any users
-  </h3>
-  <!-- <h1 style="height:1000px">A Tall Custom Modal!</h1> -->
-  <ul *ngIf="following">
-    <li *ngFor="let user of following">
-      {{ user.userName }}
-      <div *ngIf="isClicked(user.id)">You unfollowed {{ user.userName }}!</div>
-      <button *ngIf="!isClicked(user.id)"
-              class="btn btn-light"
-              (click)="unFollowUser(user.id)">
-        Unfollow
-      </button>
-    </li>
-  </ul>
-  <button class="btn btn-light"
-          (click)="closeModal('following-modal')">
-    Close
-  </button>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="titleHeader-follows">
+        <h1>Following</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="scrollbar scrollbar-primary">
+        <div class="followList">
+          <div *ngIf="following.length === 0" class="notFound">
+            <p class="post">You don't follow any users</p>
+          </div>
+          <ul *ngIf="following">
+            <li *ngFor="let user of following">
+              <div class="follow small">
+                <i class="material-icons person-small">person</i>
+                <p class="user">
+                  {{ user.userName }}
+                </p>
+                <div *ngIf="isClicked(user.id)">
+                  You unfollowed {{ user.userName }}!
+                </div>
+                <i
+                  *ngIf="!isClicked(user.id)"
+                  class="material-icons small unfollow"
+                  (click)="unFollowUser(user.id)"
+                  >remove_circle</i
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-light" (click)="closeModal('following-modal')">
+      Close
+    </button>
+  </div>
 </jw-modal>
