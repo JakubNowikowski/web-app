@@ -2,7 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
-/*#region Tags*/
+/*#region Common tags*/
 
 h2 {
   color: #efefef;
@@ -22,21 +22,25 @@ ul {
   list-style-type: none;
 }
 
-div.notFound{
-  margin: auto;
-}
-
-/*#endregion */
-
-/*#region Posts*/
-
-div.newPostHeader {
+div.titleHeader {
   width: 80vw;
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
   margin-bottom: 20px;
   background-color: rgb(77, 215, 199, 0.7);
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
 }
+
+div.notFound{
+  margin: auto;
+}
+
+
+.top-buffer { margin-top:30px; }
+
+/*#endregion */
+
+/*#region Posts*/
+
 
 div.newPostBody {
   margin-bottom: 40px;
@@ -127,7 +131,7 @@ div.followList {
 
 .btn-light {
   color: #efefef;
-  font-weight: 600;
+  font-weight: 500;
   background: #4dd7c8;
   margin: auto;
 }
@@ -136,7 +140,7 @@ div.followList {
   width: 110px;
   margin-bottom: 5px;
   color: #efefef;
-  font-weight: 600;
+  font-weight: 550;
   background: #4dd7c8;
 }
 

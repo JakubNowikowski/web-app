@@ -6,25 +6,22 @@
 
     <div class="col">
       <div class="row">
-        <button
-          class="btn btn-light-profile"
-          (click)="openModal('followers-modal')"
-        >
+        <button class="btn btn-light-profile"
+                (click)="openModal('followers-modal')">
           Followers
         </button>
       </div>
 
       <div class="row">
-        <button
-          class="btn btn-light-profile"
-          (click)="openModal('following-modal')"
-        >
+        <button class="btn btn-light-profile"
+                (click)="openModal('following-modal')">
           Following
         </button>
       </div>
 
       <div class="row">
-        <button class="btn btn-light-profile" routerLink="/edit">
+        <button class="btn btn-light-profile"
+                routerLink="/edit">
           Edit profile
         </button>
       </div>
@@ -33,18 +30,45 @@
 
   <!-- Posts -->
 
-  <div class="row">
-    <h1>Your posts:</h1>
-    <ul *ngIf="posts">
-      <li *ngFor="let post of posts">
-        {{ post.userName }} {{ post.content }}
-        <button class="btn btn-primary" (click)="deletePost(post.id)">
-          Delete
-        </button>
-      </li>
-    </ul>
-    <a *ngIf="posts.length === 0">No posts found</a>
+  <div class="row top-buffer">
+    <div class="titleHeader">
+      <h2>
+        Your posts
+      </h2>
+    </div>
   </div>
+
+  <div class="row">
+      <ul class="col-md-12" *ngIf="posts">
+        <li *ngFor="let post of posts">
+          <div class="postHeader col-md-12">
+            <div class="row">
+              <i class="col-md-2 material-icons person">person</i>
+              <p class="col-md-10 user">
+                {{ post.username }}
+              </p>
+            </div>
+          </div>
+  
+          <div class="postBody col-md-12">
+            <p class="post">
+              {{ post.content }}
+            </p>
+            <i
+              class="material-icons small"
+              (click)="deletePost(post.id)"
+              >cancel</i
+            >
+          </div>
+        </li>
+      </ul>
+      <div *ngIf="posts.length === 0" class="notFound">
+        <p class="post" >No posts found</p>
+      </div>
+    </div>
+
+
+
 </div>
 
 <!--  -->
@@ -58,7 +82,8 @@
   <ul *ngIf="followers">
     <li *ngFor="let user of followers">{{ user.userName }}</li>
   </ul>
-  <button class="btn btn-light" (click)="closeModal('followers-modal')">
+  <button class="btn btn-light"
+          (click)="closeModal('followers-modal')">
     Close
   </button>
 </jw-modal>
@@ -75,16 +100,15 @@
     <li *ngFor="let user of following">
       {{ user.userName }}
       <div *ngIf="isClicked(user.id)">You unfollowed {{ user.userName }}!</div>
-      <button
-        *ngIf="!isClicked(user.id)"
-        class="btn btn-light"
-        (click)="unFollowUser(user.id)"
-      >
+      <button *ngIf="!isClicked(user.id)"
+              class="btn btn-light"
+              (click)="unFollowUser(user.id)">
         Unfollow
       </button>
     </li>
   </ul>
-  <button class="btn btn-light" (click)="closeModal('following-modal')">
+  <button class="btn btn-light"
+          (click)="closeModal('following-modal')">
     Close
   </button>
 </jw-modal>
