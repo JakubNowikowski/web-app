@@ -6,6 +6,7 @@ import { first } from "rxjs/operators";
 
 @Component({ templateUrl: "my-profile.component.html" })
 export class MyProfileComponent implements OnInit {
+  bodyText: string;
   currentUser: User;
   following: User[] = [];
   followers: User[] = [];
