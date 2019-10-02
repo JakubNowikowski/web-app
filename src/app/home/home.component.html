@@ -10,8 +10,8 @@
   <div class="row">
     <div class="newPostBody col-md-10">
       <input type="text" [(ngModel)]="inputContent" class="form-control" />
+      <p *ngIf="isEmpty" class="post-empty">Cannot add an empty post!</p>
     </div>
-    <div *ngIf="isEmpty">Cannot add an empty post!</div>
     <div class="col-md-2">
       <i class="material-icons sendBtn" (click)="addPost()">send</i>
     </div>
@@ -42,6 +42,8 @@
         </div>
       </li>
     </ul>
-    <a *ngIf="posts.length === 0">No posts found</a>
+    <div *ngIf="posts.length === 0" class="notFound">
+      <p class="post" >No posts found</p>
+    </div>
   </div>
 </div>

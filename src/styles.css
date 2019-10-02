@@ -18,12 +18,12 @@ p.user {
   font-weight: 600;
 }
 
-p.post {
-  color: rgb(39, 37, 37);
-}
-
 ul {
   list-style-type: none;
+}
+
+div.notFound{
+  margin: auto;
 }
 
 /*#endregion */
@@ -59,6 +59,13 @@ div.addPost {
   margin-bottom: 1px;
 }
 
+p.post {
+  color: rgb(39, 37, 37);
+}
+
+p.post-empty{
+  color: rgb(255, 0, 0);
+}
 /*#endregion */
 
 /*#region Follows*/
@@ -185,3 +192,6 @@ div.card-header {
 div.card {
   margin-top: 10px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

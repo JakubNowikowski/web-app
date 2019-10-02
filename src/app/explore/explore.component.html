@@ -3,9 +3,9 @@
     <div class="newPostHeader">
       <h2>Users to follow</h2>
     </div>
-    <h3 *ngIf="clickedUsers.length == users.length">
-      You don't have any users to follow
-    </h3>
+    <div *ngIf="clickedUsers.length == users.length" class="notFound">
+        <p class="post" >You don't have any users to follow</p>
+      </div>
   </div>
 
   <div class="row">
