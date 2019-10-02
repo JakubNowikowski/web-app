@@ -131,6 +131,7 @@ div.followList {
   cursor: default;
   font-size: 60px;
   text-align: center;
+
 }
 
 .material-icons.person-small {
@@ -142,6 +143,7 @@ div.followList {
   cursor: default;
   font-size: 120px;
   text-align: center;
+  color: #689691;
 }
 
 .material-icons.sendBtn {

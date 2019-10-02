@@ -8,8 +8,22 @@ import { first } from "rxjs/operators";
 export class MyProfileComponent implements OnInit {
   bodyText: string;
   currentUser: User;
-  following: User[] = [];
-  followers: User[];
+  following: User[] = [   {firstName:"",token:"",password:"",lastName:"",id:1,username:"133413413"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User1"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"}];
+  followers: User[]=[   {firstName:"",token:"",password:"",lastName:"",id:1,username:"133413413"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User1"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User2"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User3"},
+  {firstName:"",token:"",password:"",lastName:"",id:1,username:"User4"}];
   follows: Follow[] = [];
   clickedUsers: number[] = [];
   posts: Post[] = [];
