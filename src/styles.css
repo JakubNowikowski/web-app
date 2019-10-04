@@ -32,7 +32,8 @@ div.titleHeader {
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
   margin-bottom: 20px;
   background-color: rgb(77, 215, 199, 0.7);
-  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.125);
+  border-radius: 12px;
 }
 
 div.titleHeader-follows {
@@ -46,13 +47,17 @@ div.titleHeader-follows {
 div.notFound {
   margin: auto;
 }
-
+`
 .top-buffer {
   margin-top: 30px;
 }
 
 .center-align {
   margin: auto;
+}
+
+.btn-light{
+  border-radius: 7px;
 }
 
 /*#endregion */
