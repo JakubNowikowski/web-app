@@ -47,7 +47,7 @@ div.titleHeader-follows {
 div.notFound {
   margin: auto;
 }
-`
+
 .top-buffer {
   margin-top: 30px;
 }
@@ -57,7 +57,7 @@ div.notFound {
 }
 
 .btn-light{
-  border-radius: 7px;
+  border-radius: 20px;
 }
 
 /*#endregion */

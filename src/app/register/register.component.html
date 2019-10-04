@@ -1,4 +1,12 @@
-<h2>Register</h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="titleHeader">
+      <h2>
+        Register
+      </h2>
+    </div>
+  </div>
+
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
     <label for="firstName">First Name</label>
@@ -52,13 +60,14 @@
     </div>
   </div>
   <div class="form-group">
-    <button [disabled]="loading" class="btn btn-primary">
+    <button [disabled]="loading" class="btn btn-light">
       <span
         *ngIf="loading"
         class="spinner-border spinner-border-sm mr-1"
       ></span>
       Register
     </button>
-    <a routerLink="/login" class="btn btn-link">Cancel</a>
+    <button routerLink="/login" class="btn btn-light">Cancel</button>
   </div>
 </form>
+</div>
