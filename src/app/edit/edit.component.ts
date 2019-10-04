@@ -3,6 +3,7 @@ import { UserService, AuthenticationService } from "../_services";
 import { User } from "../_models";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { first } from "rxjs/operators";
 
 @Component({
   selector: "pm-edit",
@@ -68,5 +69,20 @@ export class EditComponent implements OnInit {
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
+  }
+
+  ngOnDestroy() {
+    this.authenticationService
+      .login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          // this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          // this.alertService.error(error);
+          this.loading = false;
+        }
+      );
   }
 }
