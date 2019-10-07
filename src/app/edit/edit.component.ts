@@ -40,11 +40,6 @@ export class EditComponent implements OnInit {
     });
   }
 
-  // convenience getter for easy access to form fields
-  get f() {
-    return this.registerForm.controls;
-  }
-
   onSubmit() {
     this.submitted = true;
 
@@ -65,7 +60,6 @@ export class EditComponent implements OnInit {
           this.loading = false;
         }
       );
-
     this.authenticationService.currentUser.subscribe(
       x => (this.currentUser = x)
     );
@@ -77,12 +71,17 @@ export class EditComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          // this.router.navigate([this.returnUrl]);
+          this.router.navigate(["/profile"]);
         },
         error => {
-          // this.alertService.error(error);
+          console.log(error);
           this.loading = false;
         }
       );
+  }
+
+  // convenience getter for easy access to form fields
+  get f() {
+    return this.registerForm.controls;
   }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { first } from "rxjs/operators";
-
 import { User, Follow } from "../_models";
 import { UserService, AuthenticationService } from "../_services";
 
@@ -29,10 +28,6 @@ export class ExploreComponent implements OnInit {
       });
   }
 
-  isClicked(userId: number): boolean {
-    return this.clickedUsers.includes(userId);
-  }
-
   followUser(userToFollowId: number): void {
     this.userService
       .follow(this.currentUser.id, userToFollowId)
@@ -45,5 +40,9 @@ export class ExploreComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  isClicked(userId: number): boolean {
+    return this.clickedUsers.includes(userId);
   }
 }
