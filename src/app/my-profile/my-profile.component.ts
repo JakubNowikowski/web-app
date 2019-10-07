@@ -31,10 +31,6 @@ export class MyProfileComponent implements OnInit {
     this.getFollowing();
   }
 
-  isClicked(userId: number): boolean {
-    return this.clickedUsers.includes(userId);
-  }
-
   private getPosts() {
     this.postsService
       .getPosts(this.currentUser.id)
@@ -43,21 +39,7 @@ export class MyProfileComponent implements OnInit {
         this.posts = posts;
       });
   }
-
-  deletePost(postId: number) {
-    this.postsService
-      .delete(this.currentUser.id, postId)
-      .pipe(first())
-      .subscribe(
-        data => {
-          this.getPosts();
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  }
-
+  
   private getFollowers() {
     this.userService
       .getFollowers(this.currentUser.id)
@@ -75,6 +57,20 @@ export class MyProfileComponent implements OnInit {
         this.following = follow;
       });
   }
+  
+  deletePost(postId: number) {
+    this.postsService
+      .delete(this.currentUser.id, postId)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.getPosts();
+        },
+        error => {
+          console.log(error);
+        }
+      );
+  }
 
   unFollowUser(userToUnfollow: number) {
     this.userService
@@ -88,6 +84,10 @@ export class MyProfileComponent implements OnInit {
           console.log(error);
         }
       );
+  }
+
+  isClicked(userId: number): boolean {
+    return this.clickedUsers.includes(userId);
   }
 
   openModal(id: string) {

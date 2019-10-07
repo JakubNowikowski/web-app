@@ -14,9 +14,6 @@ import { HomeComponent } from "./home";
 import { LoginComponent } from "./login";
 import { RegisterComponent } from "./register";
 import { AlertComponent } from "./_components";
-import { ProductListComponent } from "./products/product-list.component";
-import { ConvertToSpaces } from "./shared/convert-to-spaces.pipe";
-import { StarComponent } from "./shared/star.component";
 import { MyProfileComponent } from "./my-profile/my-profile.component";
 import { ExploreComponent } from "./explore/explore.component";
 import { ModalModule } from "./_modalWindow/modal.module";
@@ -52,9 +49,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     RegisterComponent,
     AlertComponent,
-    ProductListComponent,
-    ConvertToSpaces,
-    StarComponent,
     MyProfileComponent,
     ExploreComponent,
     EditComponent
