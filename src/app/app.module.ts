@@ -7,20 +7,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { appRoutingModule } from "./app.routing";
 import { JwtInterceptor, ErrorInterceptor } from "./_helpers";
 import { AppComponent } from "./app.component";
-import { HomeComponent } from "./home";
-import { LoginComponent } from "./login";
-import { RegisterComponent } from "./register";
-import { AlertComponent } from "./_components";
-import { MyProfileComponent } from "./my-profile/my-profile.component";
-import { ExploreComponent } from "./explore/explore.component";
-import { ModalModule } from "./_modalWindow/modal.module";
-import { EditComponent } from "./edit/edit.component";
+import { HomeComponent } from "./_components/home";
+import { LoginComponent } from "./_components/login";
+import { RegisterComponent } from "./_components/register";
+import { AlertComponent } from "./_components/alert";
+import { MyProfileComponent } from "./_components/my-profile/my-profile.component";
+import { ExploreComponent } from "./_components/explore/explore.component";
+import { ModalModule } from "./_components/modalWindow/modal.module";
+import { EditComponent } from "./_components/edit/edit.component";
 import {
   MatButtonModule,
   MatToolbarModule,
   MatIconModule
 } from "@angular/material";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [

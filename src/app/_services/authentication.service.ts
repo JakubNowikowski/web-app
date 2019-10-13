@@ -23,26 +23,23 @@ export class AuthenticationService {
   }
 
   login(username: string, password: string) {
-    return (
-      this.http
-        // .post<any>(`/users/authenticate`, { username, password })
-        .post<any>(`https://localhost:44380/api/auth/login`, {
-          username,
-          password
-        })
+    return this.http
+      .post<any>(`https://localhost:44380/api/auth/login`, {
+        username,
+        password
+      })
 
-        .pipe(
-          map(user => {
-            // login successful if there's a jwt token in the response
-            if (user && user.token) {
-              // store user details and jwt token in local storage to keep user logged in between page refreshes
-              localStorage.setItem("currentUser", JSON.stringify(user));
-              this.currentUserSubject.next(user);
-            }
-            return user;
-          })
-        )
-    );
+      .pipe(
+        map(user => {
+          // login successful if there's a jwt token in the response
+          if (user && user.token) {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem("currentUser", JSON.stringify(user));
+            this.currentUserSubject.next(user);
+          }
+          return user;
+        })
+      );
   }
 
   logout() {

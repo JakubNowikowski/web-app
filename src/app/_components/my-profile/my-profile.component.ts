@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { ModalService } from "../_modalWindow/modal.service";
-import { Follow, User, Post } from "../_models";
-import { UserService, AuthenticationService, PostsService } from "../_services";
+import { ModalService } from "../modalWindow/modal.service";
+import { Follow, User, Post } from "../../_models";
+import { UserService, AuthenticationService, PostsService } from "../../_services";
 import { first } from "rxjs/operators";
 
 @Component({ templateUrl: "my-profile.component.html" })

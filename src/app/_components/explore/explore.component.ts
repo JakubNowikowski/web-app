@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { first } from "rxjs/operators";
-import { User, Follow } from "../_models";
-import { UserService, AuthenticationService } from "../_services";
+import { User, Follow } from "../../_models";
+import { UserService, AuthenticationService } from "../../_services";
 
 @Component({ templateUrl: "explore.component.html" })
 export class ExploreComponent implements OnInit {

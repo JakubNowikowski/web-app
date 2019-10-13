@@ -39,9 +39,10 @@ export class AlertService {
         text: "Cannot connect with the server"
       });
     else {
+      console.log(message);
       this.subject.next({
         type: "error",
-        text: "This username already exists, please pick another one"
+        text: "Username or password is incorrect"
       });
     }
   }

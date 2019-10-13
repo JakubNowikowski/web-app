@@ -1,8 +1,8 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { first } from "rxjs/operators";
 
-import { User, Post, Follow } from "../_models";
-import { UserService, AuthenticationService, PostsService } from "../_services";
+import { User, Post, Follow } from "../../_models";
+import { UserService, AuthenticationService, PostsService } from "../../_services";
 import { HttpClient } from "@angular/common/http";
 
 @Component({
