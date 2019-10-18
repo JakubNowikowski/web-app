@@ -39,7 +39,6 @@ export class AlertService {
         text: "Cannot connect with the server"
       });
     else {
-      console.log(message);
       this.subject.next({
         type: "error",
         text: "Username or password is incorrect"

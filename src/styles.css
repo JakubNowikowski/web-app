@@ -19,7 +19,7 @@ p {
 }
 
 p.user {
-  color: rgb(100, 96, 96, 0.8);
+  color: rgba(0, 0, 0, 0.54);
   font-weight: 600;
 }
 
@@ -31,8 +31,7 @@ div.titleHeader {
   width: 80vw;
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
   margin-bottom: 20px;
-  background-color: rgb(77, 215, 199, 0.7);
-  border-bottom: 4px solid rgba(0, 0, 0, 0.125);
+  background-color: #0077b5;
   border-radius: 12px;
 }
 
@@ -41,7 +40,7 @@ div.titleHeader-follows {
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
   margin-bottom: 20px;
   border-bottom: 2px solid rgba(0, 0, 0, 0.125);
-  color: #4dd7c8;
+  color: #0077b5;
 }
 
 div.notFound {
@@ -56,7 +55,7 @@ div.notFound {
   margin: auto;
 }
 
-.btn-light{
+.btn-light {
   border-radius: 20px;
 }
 
@@ -70,9 +69,10 @@ div.newPostBody {
 
 div.postHeader {
   padding: 0.8rem 0.125rem 0.1rem 1.1rem;
-  /* margin-bottom: 20px; */
-  background-color: rgb(77, 215, 199, 0.1);
+  background-color: #0077b53b;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 div.postBody {
@@ -102,7 +102,7 @@ div.follow {
   padding: 0.9rem 0.5rem 0.9rem 0.5rem;
   margin-bottom: 20px;
   text-align: center;
-  background-color: rgb(77, 215, 199, 0.1);
+  background-color: #0077b53b;
   border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -120,7 +120,7 @@ div.followList {
 
 .material-icons {
   cursor: pointer;
-  color: #4dd7c8;
+  color: #0077b5;
 }
 
 .material-icons.small {
@@ -161,7 +161,7 @@ div.followList {
 .material-icons.nav:hover,
 .material-icons.small:hover,
 .material-icons.sendBtn:hover {
-  color: #bdeee8;
+  color: #689cb8;
 }
 
 /*#endregion */
@@ -169,7 +169,7 @@ div.followList {
 .btn-light {
   color: #efefef;
   font-weight: 500;
-  background: #4dd7c8;
+  background: #0077b5;
   margin: auto;
 }
 
@@ -178,7 +178,7 @@ div.followList {
   margin-bottom: 5px;
   color: #efefef;
   font-weight: 550;
-  background: #4dd7c8;
+  background: #0077b5;
 }
 
 /*#region Tooltip*/

@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 export class UserService {
   baseUrl: string = "https://localhost:44380/api/";
   constructor(private http: HttpClient) {}
-
+y
   //#region Users
 
   getAllUsers(): Observable<User[]> {
@@ -28,7 +28,7 @@ export class UserService {
 
   getFollowers(userId: number): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + `users/${userId}/followers`);
-  }
+  } 
 
   getFollowing(userId: number): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl + `users/${userId}/following`);
