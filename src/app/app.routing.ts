@@ -9,8 +9,9 @@ import { ExploreComponent } from "./_components/explore/explore.component";
 import { EditComponent } from "./_components/edit/edit.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: LoginComponent },
   { path: "login", component: LoginComponent },
+  { path: "home", component: HomeComponent },
   { path: "register", component: RegisterComponent },
   { path: "explore", component: ExploreComponent },
   { path: "profile", component: MyProfileComponent },
