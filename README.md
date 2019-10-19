@@ -11,9 +11,10 @@ Web application that allows users to:
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-#### These project is attached to web-server project so you should download it first: https://github.com/JakubNowikowski/web-server 
 
 ### Prerequisites
+
+#### These project is attached to web-server project so you should download it first: https://github.com/JakubNowikowski/web-server 
 
 What things you need to install the software and how to install them
 
