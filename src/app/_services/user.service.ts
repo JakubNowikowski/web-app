@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 @Injectable({ providedIn: "root" })
 export class UserService {
-  baseUrl: string = "https://localhost:44380/api/";
+  baseUrl: string = "https://webapi20200109014942.azurewebsites.net/api/";
   constructor(private http: HttpClient) {}
 y
   //#region Users

@@ -24,7 +24,7 @@ export class AuthenticationService {
 
   login(username: string, password: string) {
     return this.http
-      .post<any>(`https://localhost:44380/api/auth/login`, {
+      .post<any>(`https://webapi20200109014942.azurewebsites.net/api/auth/login`, {
         username,
         password
       })

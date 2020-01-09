@@ -9,7 +9,9 @@ export class PostsService {
   private currentPostSubject: BehaviorSubject<Post>;
   public currentPost: Observable<Post>;
   public post: Post;
-  baseUrl: string = "https://localhost:44380/api/";
+  // baseUrl: string = "https://localhost:44380/api/";
+  baseUrl: string = "https://webapi20200109014942.azurewebsites.net/api/";
+  
 
   constructor(private http: HttpClient) {
     this.currentPostSubject = new BehaviorSubject<Post>(
