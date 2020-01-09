@@ -1,5 +1,11 @@
 # web-app
+
 https://angularappjn.azurewebsites.net
+
+To see all mentioned features immediately without registering several users, there are already 4 prototype users added (each user has attached post and follow connection with another user). So to see all the functionality without adding your own users you can log in as user1. 
+
+* Login: user1
+* Password: aaaaaa
 
 Web application that allows users to:
 - register an account
@@ -45,10 +51,3 @@ To properly use the build solution you need to set a database in Visual Studio:
 Update-Database
 ```
 Restart of Visual Studio might be needed.
-
-## After startup
-
-To see all mentioned features immediately without registering several users, there are already 4 prototype users added (each user has attached post and follow connection with another user). So to see all the functionality without adding your own users you can log in as user1. 
-
-* Login: user1
-* Password: aaaaaa
